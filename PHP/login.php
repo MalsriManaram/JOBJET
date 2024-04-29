@@ -16,7 +16,7 @@
                 $msg = "<div style='width: 340px; height: 40px; font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #cef1c6; border-radius: 5px; color: #030303; border: 1px solid #c6f5ca;  padding: 9px 12px ; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>Account verification has been successfully completed.</div>";
             }
         } else {
-
+ 
             
 
             if (isset($_POST['submit'])){
@@ -26,35 +26,30 @@
                 $sql = "SELECT * FROM users WHERE email = '{$Email}' AND password = '{$Password}'";
                 $result = mysqli_query($conn, $sql);
         
-                if(mysqli_num_rows($result)=== 1){
+                if(mysqli_num_rows($result) === 1){
                     $row = mysqli_fetch_assoc($result);
-        
+                
                     if(empty($row['code'])){
-                        $_SESSION['SESSION_EMAIL'] = $Email;
+                        $_SESSION['email'] = $row['email'];
                         $_SESSION['id'] = $row['id'];
                         $_SESSION['first_name'] = $row['first_name'];
                         $_SESSION['last_name'] = $row['last_name'];
                         $_SESSION['nick_name'] = $row['nick_name'];
-
+                
+                        $_SESSION['SESSION_EMAIL'] = $Email;
                         $image_sql = "SELECT pro_img FROM users WHERE email = '{$Email}'";
                         $image_result = mysqli_query($conn, $image_sql);
                         $image_row = mysqli_fetch_assoc($image_result);
-            
-                        
+                
                         if ($image_row && !empty($image_row['pro_img'])) {
                             $_SESSION['pro_img'] = $image_row['pro_img'];
                         } 
-                        
-                        
-            
-                        header("Location: /JOBJET/PHP/index.php");
-                        exit();
+                
 
-        
-                    }else{
+                    } else {
                         $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; text-align: center; background-color: #f8d7da; border-radius: 5px; color: #000000; border: 1px solid #f5c6cb; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>First verify your account and try again.</div>";
                     }
-                } else{
+                } else {
                     $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; text-align: center; background-color: #f8d7da; border-radius: 5px; color: #000000; border: 1px solid #f5c6cb; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>Email or password do not match.</div>";
                 }
             }
@@ -91,7 +86,7 @@
                 
                
     
-                header("Location: /JOBJET/PHP/index.php");
+                header("Location: /JOBJET/PHP/home.php");
                 exit();
 
             }else{
@@ -108,7 +103,7 @@
 
 <html>
     <head> 
-    <link href="/JOBJET/CSS/login1.css" rel="stylesheet">
+    <link href="/JOBJET/CSS/login.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
     <body>
@@ -119,7 +114,7 @@
                 <div class="card2" >
                     
                     <form action="" method="post">
-                    <a href="index.php"> <img src="/JOBJET/IMAGERS/reject.png" class="img00" alt="exit" > </a>
+                    <a href="home.php"> <img src="/JOBJET/IMAGERS/reject.png" class="img00" alt="exit" > </a>
 
                     <?php echo $msg; ?>
 

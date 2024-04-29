@@ -24,8 +24,9 @@
         $Password = mysqli_real_escape_string($conn, md5($_POST['Password']));
         $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm_password']));
         $code = mysqli_real_escape_string($conn, md5(rand()));
+        $identify = mysqli_real_escape_string($conn, rand());
         
-
+                    
         if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email='{$Email}'")) > 0){
            
             $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #f8d7da; border-radius: 5px; color: #000000; border: 1px solid #f5c6cb; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'> {$Email} - This email address has been already exists.</div>";
@@ -34,7 +35,7 @@
         else{
             
             if ($Password === $confirm_password){
-                $sql = "INSERT INTO users (first_name, last_name, email, password, code) VALUES ('{$first_name}', '{$last_name}', '{$Email}', '{$Password}', '{$code}')";
+                $sql = "INSERT INTO users (first_name, last_name, email, password, code, identify ) VALUES ('{$first_name}', '{$last_name}', '{$Email}', '{$Password}', '{$code}', '{$identify}')";
                 $result = mysqli_query($conn, $sql);
 
                 if($result){
@@ -71,7 +72,7 @@
                      } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }
-                
+                 
                     echo "</div>";
                     $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #dad7f8; border-radius: 5px; color: #000000; border: 1px solid #cdc6f5; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>We've send a verification link on your email address</div>";
                 }
@@ -92,7 +93,6 @@
 
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -125,7 +125,7 @@
 
                                         <div >
                                             <label for="last Name" class="labels">Last Name</label>
-                                            <input type="text" name="last_name" class="form-control"  value="<?php if (isset($_POST['submit'])) { echo $last_name; } ?>" placeholder="Enter Your Last Name...." required>
+                                            <input type="text" name="last_name" class="form-control"  value="<?php if (isset($_POST['submit'])) { echo $last_name; } ?>" placeholder="Enter Your Last Name" required>
                                         </div>
 
                                         <div >

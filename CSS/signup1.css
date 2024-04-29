@@ -20,8 +20,24 @@ body{
     background-size: 710px 600px;
     padding: 0px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.459);
-    
+    opacity: 0;
+    transition: opacity 1s ease-in-out; 
+    animation: fadeInAnimation 0.5s ease-in-out; 
+    animation-fill-mode: forwards;
 }
+
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .card2{
     
@@ -96,6 +112,7 @@ body{
 
 .form-control::placeholder{
     color: #b1b1b1;
+    font-style: italic;
 }
 
 #confirmPassword{

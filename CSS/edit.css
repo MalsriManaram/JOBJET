@@ -1,0 +1,786 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/JOBJET/IMAGERS/ProfileBack.png') no-repeat;
+    background-size: 500%;
+    background-position: center;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+
+.card{
+    display: flex;
+    position: absolute;
+    top:70px;
+    width: 80%;
+    height: 310%;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; 
+    animation: fadeInAnimation 0.5s ease-in-out; 
+    animation-fill-mode: forwards; 
+}
+
+ 
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h3{
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 0%;
+    margin-left: 3%;
+    
+}
+
+.hr1{
+    margin-top: 0.5%;
+}
+
+.pro_img{
+    
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-top: 0%;
+    margin-left: 40px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+   
+}
+.pro_img1{
+    
+    position: relative;
+    right:  40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-top: 0%;
+    margin-left: 40px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+   
+}
+
+.upload_img{
+    
+    position: relative;
+    left: 175px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: 40px 40px;
+    border-radius: 100px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+    
+    
+}
+
+
+.upload_img:hover {
+    
+    transition: .1s;
+    transform: translatey(2px);
+}
+
+.pro_img_label{
+    cursor: pointer;
+}
+
+
+h6{
+    font-size: 16px;
+    font-weight:700;
+    margin-bottom: 15px;
+    color: #8F8F8F;
+}
+
+.For-name{
+    position: relative;
+    margin-left: 240px;
+    bottom: 180px;
+}
+
+
+.labels{
+    font-size: 16;
+    font-weight:700;
+}
+
+.form-control{
+    position: relative;
+    left:170px;
+    bottom: 30px;
+    width:400px;
+    height: 35px;
+    background-color: rgb(231, 231, 231);
+}
+
+
+#form-control1{
+    width:200px; 
+}
+
+.form-control::placeholder{
+    color: #b1b1b1;
+    font-style: italic;
+}
+
+
+.hr2{
+    position: relative;
+    right: 10px;
+    bottom: 12px;
+    margin-top: 0.5%;
+    width: 755px;
+}
+
+
+.hr3{
+    position: relative;
+    left: 285px;
+    bottom: 200px;
+    margin-top: 0.5%;
+    width: 72%;
+}
+
+
+.For-infor{
+    position: relative;
+    margin-left: 240px;
+    bottom: 200px;
+}
+
+.For-infor img{
+    position: relative;
+    bottom: 1px;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    
+}
+
+.For-name ,.For-infor{
+    position: relative;
+    left: 60px;
+    
+}
+
+.contact{
+    position: relative;
+    bottom: 20px;
+    
+}
+
+.work{
+    position: relative;
+    bottom: 35px;
+}   
+
+.filed{
+    position: relative;
+    bottom: 45px;
+}
+
+.skills{
+    position: relative;
+    bottom: 60px;
+    
+}
+
+#form-control3{
+   
+    resize: none;
+    width:400px; 
+    height: 200px;
+    
+}
+
+
+
+.upload-label{
+    display: block;
+    position: relative;
+    left: 310px;
+    bottom: 200px;
+    background-color:#e0e0e0;
+    border-radius: 10px;
+    width: 300px;
+    height: 120px;
+    cursor: pointer;
+}
+.uploading-img{
+    margin: 15px;
+    margin-left: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+
+.uploading-img:hover, .upload-label:hover{
+    background-color: #b6b6b6;
+    transform: translateY(4px);
+    transition: .4s;
+}
+
+.upload-input{
+    display: none;
+}
+
+.save-button{
+    position: relative;
+    left: 870px;
+    bottom: 170px;
+    width: 120px;
+    height: 45px;
+    color:#fff;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: inherit;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+    background: linear-gradient(to right, #000000, #1a1a1a);
+}
+
+.relocating-button{
+    position: relative;
+    left: 600px;
+    bottom: 168px;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:#fff;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: inherit;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+    background: linear-gradient(to right, #0e1055, #014797);
+}
+.relocating-button:hover{
+
+    transform: translateX(1px);
+    transition: .10s;
+}
+
+.save-button:hover, .remove-button:hover, .relocating-button:hover{
+    font-weight: 500;
+    transform: translateX(1px);
+    transition: .1s;
+}
+
+
+.remove-button{
+    position: relative;
+    left: 600px;
+    bottom: 15px;
+    width: 120px;
+    height: 45px;
+    color:#fff;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: inherit;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+    background: linear-gradient(to right, #9b0c0c, #720101);
+}
+
+#add-more-button{
+        cursor: pointer;
+        position: relative;
+        left:24%;
+        bottom: 193.5px;
+        width: 20px;
+        height: 20px;
+}
+
+#add-more-button:hover{
+    transform: translatey(2px);
+    transition: .4s;
+}
+
+.nagative-msg{
+    font-size: 13px;
+    font-weight: 400;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    background-color: #f8d7da;
+    border-radius: 5px; 
+    color: #000000;
+    border: 1px solid #f5c6cb;
+    padding: 6px 18px 5px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.positive-msg{
+    font-size: 13px;
+    font-weight: 400;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    background-color: #cef1c6;
+    border-radius: 5px; 
+    color: #000000; 
+    border: 1px solid #c6f5ca;
+    padding: 6px 18px 5px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.positive-img-msg{
+    position: relative;
+    top: 13%;
+    right: 36.5%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    color: #016e3b; 
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.nagative-img-msg{
+    position: relative;
+    top: 15%;
+    right: 36.5%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    color: #8b0303; 
+    font-family: 'Poppins', sans-serif;
+    
+}
+.positive-resume-img-msg{
+    position: relative;
+    top: 79.5%;
+    right: 6%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    color: #016e3b; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.nagative-resume-img-msg{
+    position: relative;
+    top: 78%;
+    right: 6%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    color: #8b0303; 
+    font-family: 'Poppins', sans-serif;
+}
+.negative-img-msg-file{
+    position: relative;
+    top: 160px;
+    right: -1%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    color: #8b0303; 
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 1340px){
+
+    body{
+        background-size: 2000px 4000px;
+    }
+    .card{
+        width:90%;
+        height: 325%;
+        transition: .2s;
+    }
+
+    .hr2{
+        width: 94.5%;
+        transition: .2s;
+    }
+    .hr3{
+        width: 75%;
+        transition: .2s;
+    }
+
+    .save-button{
+        position: relative;
+        left: 88%;
+        bottom: 100px;
+        transition: .2s;
+    }
+    
+    .remove-button{
+        position: relative;
+        left: 78%;
+        transition: .2s;
+    }
+    .relocating-button{
+        position: relative;
+        left: 63%;
+        bottom: 99.5px;
+        transition: .2s;
+    }
+    #add-more-button{
+        position: relative;
+        bottom: 193px;
+        left: 23%;
+        transition: .2s;
+    }
+
+
+}
+
+@media (max-width: 1295px){
+
+    body{
+        background-size: 2000px 4000px;
+    }
+
+    .card{
+        width: 90%;
+        height: 325%;
+        transition: .2s;
+    }
+
+    .hr2 {
+        width: 93%;
+        transition: .2s;
+    }
+
+    .hr3{
+        width:71%;
+        transition: .2s;
+    }
+
+    .save-button{
+        position: relative;
+        left: 88%;
+        bottom: 100px;
+        transition: .2s;
+
+    }
+    .remove-button{
+        position: relative;
+        left: 75%;
+        transition: .2s;
+    }
+    .relocating-button{
+        position: relative;
+        left: 60%;
+        bottom: 99.5px;
+        transition: .2s;
+    }
+    #add-more-button{
+        position: relative;
+        bottom: 193px;
+        left: 24%;
+        transition: .2s;
+    }
+
+
+}
+
+@media (max-width: 1125px){
+    body{
+        background-size: 2000px 4000px;
+    }
+    .card{
+        height: 1900px;
+    }
+    .hr2 {
+        width: 91%;
+        transition: .2s;
+    }
+
+    .hr3{
+        width:66%;
+        transition: .2s;
+    }
+
+    .save-button{
+        position: relative;
+        left: 85%;
+        bottom: 100px;
+        transition: .2s;
+
+    }
+
+    .remove-button{
+        position: relative;
+        left: 70%;
+        transition: .2s;
+    }
+    .relocating-button{
+        position: relative;
+        left: 54%;
+        bottom: 99.5px;
+        transition: .2s;
+    }
+    #add-more-button{
+        position: relative;
+        bottom: 193px;
+        left: 28%;
+        transition: .2s;
+    }
+
+    .form-control{
+        width: 360px;
+        transition: .2s;
+    }
+
+    #form-control3{
+        width:360px; 
+        transition: .2s;
+    }
+
+}
+
+
+@media (max-width: 990px){
+    
+    body{
+        justify-content: center;
+        align-items: center;
+        background-size:2000px 4000px;
+        overflow-y: auto;
+        transition: .2s;
+    }
+
+    .card{
+        height: 2100px;
+    }
+
+    .pro_img{
+        position: relative;
+        top: 10px;
+        left: 36%;
+        transition: .2s;
+    }
+    .upload_all{
+        position: relative;
+        left: 4%;
+        transition: .2s;
+    }
+
+    .upload_img{
+    
+        position: relative;
+        left: 270PX;
+        top: -35px;
+        transition: .2s;
+        
+    }
+    
+    
+
+    .For-name{
+        position: relative;
+        left: -220px;
+        top:60px;
+    }
+
+    .For-infor{
+        position: relative;
+        left: -220px;
+        top: 40px;
+    }
+
+    .hr2{
+        width: 188%; 
+        transition: .2s;
+    }
+    .hr3{
+        position: relative;
+        left: 10px;
+        top: 50px;
+        width: 98%;
+        transition: .2s;
+    }
+
+    .form-control{
+        width: 90%;
+        transition: .2s;
+    }
+
+
+    #form-control3{
+        width: 90%; 
+        transition: .2s;
+    }
+
+    .upload-label{
+        position: relative;
+        left: 15%;
+        top: 50px;
+        transition: .2s;
+    }
+    .save-button{
+        position: relative;
+        left: 76%;
+        top:80px;
+        transition: .2s;
+    }
+
+    .remove-button{
+        position: relative;
+        left: 115%;
+        transition: .2s;
+    }
+    .relocating-button{
+        position: relative;
+        left: 40%;
+        top: 80px;
+        transition: .2s;
+    }
+    #add-more-button{
+        position: relative;
+        top: 45px;
+        left: -10px;
+        transition: .2s;
+    }
+}
+
+@media (max-width: 850px){
+
+    .relocating-button{
+        position: relative;
+        left: 27%;
+        top: 81px;
+        transition: .2s;
+    }
+ 
+
+}
+
+@media screen and (max-width: 630px){
+
+    body{
+        justify-content: center;
+        align-items: center;
+        background-size:1500px 4000px;
+        overflow-y: auto;
+        transition: .2s;
+    }
+
+    .card{
+        height: 2140px;
+    }
+
+    .pro_img{
+        position: relative;
+        top: 10px;
+        left: 70px;
+        transition: .2s;
+    }
+
+    .upload_all{
+        position: relative;
+        left: -1%;
+        transition: .2s;
+    }
+    .upload_img{
+    
+        position: relative;
+        left: 250PX;
+        top: -35px;
+        transition: .2s;
+        
+    }
+
+    .For-name{
+        position: relative;
+        left: -220px;
+        top:60px;
+    }
+
+    .For-infor{
+        position: relative;
+        left: -220px;
+        top: 40px;
+    }
+
+    .hr2{
+        width: 188%; 
+        transition: .2s;
+    }
+    .hr3{
+        position: relative;
+        left: 10px;
+        top: 50px;
+        width: 98%;
+        transition: .2s;
+    }
+
+    .form-control{
+        width: 110%;
+        transition: .2s;
+    }
+    
+    #form-control1{
+        width: 110%;
+        transition: .2s;
+    }
+
+    #form-control3{
+        width: 110%; 
+        transition: .2s;
+    }
+
+    .upload-label{
+        position: relative;
+        left: 15%;
+        top: 50px;
+        transition: .2s;
+    }
+    .save-button{
+        position: relative;
+        left: 70%;
+        top:80px;
+        transition: .2s;
+    }
+    .remove-button{
+        position: relative;
+        left: 140%;
+        transition: .2s;
+    }
+    .relocating-button{
+        position: relative;
+        left: 10px;
+        top: 80px;
+        transition: .2s;
+    }
+    #add-more-button{
+        position: relative;
+        top: 45px;
+        left: -12px;
+        transition: .2s;
+    }
+}
+
+
+

@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(255, 255, 255);
+    overflow-y:auto;
+
+}
+.resume_img{
+    width: 450px;
+    height: 600px;
+    
+}
+
+
+.print_button:hover{
+    font-weight: 500;
+    transform: translateX(1px);
+    transition: .1s;
+}
+
+
+.print_button{
+   
+    width: 120px;
+    height: 45px;
+    color:#fff;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: inherit;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+    background: linear-gradient(to right, #9b0c0c, #720101);
+}
+
+@media print{
+    body *{
+        display: none;
+
+    }
+    .content, .content *{
+        display: block;
+    }
+}
