@@ -67,9 +67,9 @@
                                 <tr>
                                 <td><img src="/JOBJET/UPLOADED_IMG/'.(!empty($row['pro_img']) ? $row['pro_img'] : 'profile.png').'" class="proimg"></td>
                                   <td>'.(!empty($row['full_name']) ? $row['full_name'] : $row['first_name']).'</td>
-                                  <td>'.(!empty($row['filed']) ? $row['filed'] : '<span style="color: red">Update The Field</span>').'</td>
+                                  <td class="td">'.(!empty($row['filed']) ? $row['filed'] : '<span style="color: red">None</span>').'</td>
                                   <td>'.(!empty($row['pro_email']) ? $row['pro_email'] : $row['email']).'</td>
-                                  <td><a href="view_profile.php?identify='.$row['identify'].'" class="view-button">View Profile</a></td>
+                                  <td class="td"><a href="view_profile.php?identify='.$row['identify'].'" class="view-button"></a></td>
                                 </tr>
                               </tbody>';
                       }
@@ -89,7 +89,7 @@
             echo '
             <thead>
                 <tr>
-                    <th>Profile img</th>
+                    <th>Profile image</th>
                     <th>Name</th>
                     <th>Field</th>
                     <th>Email</th>
@@ -104,9 +104,9 @@
                 <tr>
                 <td><img src="/JOBJET/UPLOADED_IMG/'.(!empty($row['pro_img']) ? $row['pro_img'] : 'profile.png').'" class="proimg"></td>
                 <td>'.(!empty($row['full_name']) ? $row['full_name'] : $row['first_name']).'</td>
-                <td>'.(!empty($row['filed']) ? $row['filed'] : '<span style="color: red">Update The Field</span>').'</td>
+                <td class="td">'.(!empty($row['filed']) ? $row['filed'] : '<span style="color: red">None</span>').'</td>
                 <td>'.(!empty($row['pro_email']) ? $row['pro_email'] : $row['email']).'</td>
-                <td><a href="view_profile.php?identify='.$row['identify'].'" class="view-button">View Profile</a></td> 
+                <td class="td"><a href="view_profile.php?identify='.$row['identify'].'" class="view-button"></a></td> 
                 </tr>
               </tbody>';
             }
@@ -120,6 +120,7 @@
   </div>
 
 </body>
+
 
 </html>
 

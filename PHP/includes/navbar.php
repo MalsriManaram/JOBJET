@@ -54,7 +54,7 @@ if (isset($_SESSION['id'])) {
             </a>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="/JOBJET/IMAGERS/JOBJET02.png" id="icon2" alt="JOBJET" width="116px" height="56px" ></h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="/JOBJET/IMAGERS/JOBJET02.png"  alt="JOBJET" width="116px" height="56px" ></h5>
                 <button type="button" class="btn-close" id="close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             
@@ -139,3 +139,4 @@ if (isset($_SESSION['id'])) {
        
     </body>
 </html>
+ 

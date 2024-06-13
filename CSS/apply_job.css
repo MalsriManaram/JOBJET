@@ -42,7 +42,7 @@ body{
     text-decoration: none;
     border: none;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
-    background: linear-gradient(to right, #145f05, #025809);
+    background: linear-gradient(to right, #0e66d8, #1c29b4);
 }
 
 .print_button{
@@ -238,13 +238,14 @@ body{
     text-decoration: none;
     border: none;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
-    background: linear-gradient(to right, #0a5004, #175a03);
+    background: linear-gradient(to right, #0e66d8, #1c29b4);
     margin-bottom: 2%;
 }
 
 
 .positive-img-msg{
     position: relative;
+    margin-top: 10px;
     top: 13%;
     right: 36.5%;
     font-size: 13px;
@@ -268,6 +269,21 @@ body{
     font-family: 'Poppins', sans-serif;
     
 }
+
+.negative-img-msg-error{
+    display: flex;
+    text-align: left;
+    justify-content: left;
+    margin: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    color: #8b0303; 
+    font-family: 'Poppins', sans-serif;
+}
+
+
 .negative-img-msg-file{
     position: relative;
     top: 150px;
@@ -282,6 +298,7 @@ body{
 
 .positive-resume-img-msg{
     position: relative;
+    margin-top: 10px;
     top: 78.5%;
     right: 6%;
     font-size: 13px;

@@ -61,23 +61,24 @@ if (isset($_SESSION['id'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="profile">
         
-        <link rel="stylesheet" href="/JOBJET/CSS/profile1.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="/JOBJET/CSS/profile.css" type="text/css" media="all" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         
 
     </head>
     <body>
     <?php if(isset($_SESSION['id'])): ?>
-        
-        <div class="card">
-                <h3>User Profile </h3><hr class="hr1">
-                    
+
+        <div class="card">        
+                <h3>User Profile </h3><hr class="hr1">            
+                <a href="edit.php" class="edit-button">Edit</a>
+
                         <div><img class="pro_img" src="/JOBJET/UPLOADED_IMG/<?=$_SESSION['pro_img']?>"  alt="Profile Image" ></div>
                     
                 
                     
                 <div class="all">
-                <a href="edit.php" class="edit-button">Edit</a>
+
                 <div class="For-name">
                     <h2><?=$_SESSION['full_name']?><h2>
                     <span><?=$_SESSION['nick_name']?></span>

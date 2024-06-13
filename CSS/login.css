@@ -7,8 +7,6 @@ body{
     background: url('/JOBJET/IMAGERS/BG_01.png') no-repeat;
     background-size: cover;
     background-position: center;
-    
-    
 }
 
 #card{
@@ -186,9 +184,6 @@ body{
     box-shadow:inset 0 5px 5px rgba(0, 0, 0, 0.144);
 }
 
-
-
-
 .toggle-password {
     position: relative;
     bottom: 30px;
@@ -198,5 +193,19 @@ body{
     
 }
 
+@media screen and (max-width:700px){
+
+    #card{
+        position: relative;
+        left: -15px;
+        width: 110%;
+        transition: .2s;
+    }
+
+    .card2{
+        width: 100%;
+        transition: .2s;
+    }
+}
 
 

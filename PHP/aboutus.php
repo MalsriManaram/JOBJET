@@ -3,6 +3,7 @@ $page_title= "About Us";
 include('includes/header.php'); 
 include ('config.php');
 include('includes/navbar.php'); 
+
 ?>
 
 
@@ -11,7 +12,6 @@ include('includes/navbar.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/JOBJET/CSS/aboutus.css">
 </head>
 <body class="about-page">
@@ -31,10 +31,10 @@ include('includes/navbar.php');
                     </div>
                 </div>
                 <div class="social">
-                    <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/home/?originalSubdomain=lk"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
 
                 </div>
                 
@@ -42,9 +42,14 @@ include('includes/navbar.php');
         </div>
     </div>
    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/JOBJET/JavaScript/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
 </body>
 <footer class= "footer">
         <img class="img" src="/JOBJET/IMAGERS/copyright_white.png" alt="Developed by Tech Titans">
 
-    </footer>
+</footer>
 </html>

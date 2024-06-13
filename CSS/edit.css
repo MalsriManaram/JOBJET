@@ -407,6 +407,10 @@ h6{
     font-family: 'Poppins', sans-serif;
 }
 
+footer{
+    z-index: 2;
+}
+
 @media (max-width: 1340px){
 
     body{

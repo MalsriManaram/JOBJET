@@ -1,0 +1,720 @@
+body{
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    min-height: 120vh;
+    background: url('/JOBJET/IMAGERS/ProfileBack.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow-y:auto;
+}
+
+
+.card{
+    display: flex;
+    position: absolute;
+    top:60px;
+    width: 95%;
+    height: 100%;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px; 
+    opacity: 0;
+    transition: opacity 1s ease-in-out; 
+    animation: fadeInAnimation 0.5s ease-in-out; 
+    animation-fill-mode: forwards;
+    
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h3{
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 0%;
+    margin-left: 3%;
+    
+}
+
+.hr1{
+    margin-top: 0.5%;
+}
+
+.pro_img{
+    display: flex;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-top: 0%;
+    margin-left: 40px;
+}
+
+.For-name h2{
+    position: relative;
+    left:260px;
+    bottom: 180px;
+    font-size: 32px;
+    font-weight: 700;
+    margin-right: 0%;
+}
+
+.For-name span{
+    position: relative;
+    bottom:20px;
+    font-size: 19px;
+    font-weight: 300;
+    
+}
+
+.hr2{
+    position: relative;
+    right: 30px;
+    bottom: 02px;
+    margin-top: 0.5%;
+    width: 410px;
+}
+
+.hr4{
+    position: relative;
+    left: 300px;
+    bottom: 200px;
+    margin-top: 0.5%;
+    width: 300px;
+}
+
+.hr3{
+    position: relative;
+    left: 300px;
+    bottom: 200px;
+    margin-top: 0.5%;
+    width: 36%;
+}
+
+.hr5{
+    position: relative;
+    left: 300px;
+    bottom: 200px;
+    margin-top: 1%;
+    width:34%;
+}
+
+.hr6{
+    position: absolute;
+    left:782px;
+    bottom: 193px;
+    margin-top: 1%;
+    width: 33%;
+}
+
+h6{
+    font-size: 16px;
+    font-weight:700;
+    color: #8F8F8F;
+}
+
+p{  
+    display: flex;
+    font-size: 16px;
+    
+    
+}
+.For-infor{
+    width: 250px;
+    height: auto;
+    
+}
+
+.For-infor h6{
+    position: relative;
+    left: 260px;
+    bottom: 210px;
+}
+
+
+.For-infor p{
+    position: relative;
+    left: 250px;
+    bottom: 200px;
+    font-weight: 700;
+}
+
+.For-infor p p1{
+    position: relative;
+    left: 150px;
+    font-weight: 500;
+}
+
+
+
+.For-infor p p2{
+    position: relative;
+    left: 125px;
+    font-weight: 500;
+}
+.For-infor p p3{
+    position: relative;
+    left: 135px;
+    font-weight: 500;
+}
+
+.For-infor p p4{
+    position: relative;
+    left: 75px;
+    font-weight: 500;
+}
+
+.For-infor p p5{
+    position: relative;
+    left: 148px;
+    font-weight: 500;
+}
+
+.For-infor p p6{
+    position: relative;
+    left: 159px;
+    font-weight: 500;
+}
+.For-infor p7{
+    position: relative;
+    left: 310px;
+    bottom: 210px;
+    font-weight: 700;
+    white-space: pre-wrap;
+
+    
+    
+}
+.para7{
+    position: absolute;
+    
+}
+
+.For-infor p8{
+    position: absolute;
+    font-size: 17px;
+    left: 290px;
+    bottom: 210px;
+    font-weight: 700;
+    width: 400px;
+    
+}
+
+.For-infor p9{
+    position: relative;
+    font-size: 16px;
+    left: 290px;
+    bottom: 190px;
+    font-weight: 400;
+}
+
+.para9{
+    position: absolute;
+    max-width: 400px;
+}
+
+.For-infor img{
+    position: relative;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    
+}
+
+.h3, .For-name ,.For-infor{
+    position: relative;
+    left: 60px;
+    
+}
+
+
+#basic{
+    position: relative;
+    top: 20px;
+}
+
+.contact{
+    
+    position: relative;
+    left: 470px;
+    bottom: 32px;
+    
+}
+
+.skills{
+    
+    position: relative;
+    right: 300px;
+    bottom: 80px;
+}
+
+
+.work{
+    position: relative;
+    bottom: 50px;
+}   
+
+.filed{
+    position: absolute;
+    left: 485px;
+    top: 603px;
+}
+
+
+.edit-button{
+    position: absolute;
+    margin-top: 4%;
+    margin-left: 89%;
+    width: 100px;
+    height: 40px;
+    background: linear-gradient(to right, #3037DD, #0075FF);
+    padding:6px 33px;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: inherit;
+    border-radius: 30px;
+    transform: translateX(8px);
+    text-decoration: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+
+}
+
+.view-button{
+
+    margin-left: 82%;
+    margin-top: -16%;
+    width: 180px;
+    height: 40px;
+    background: linear-gradient(to right, #000000, #1a1a1a);
+    padding:6px 35px;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: inherit;
+    border-radius: 30px;
+    transform: translateX(8px);
+    text-decoration: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
+}
+
+.edit-button:hover, .view-button:hover{
+    font-weight: 500;
+}
+
+
+@media (max-width: 1295px){
+
+    body{
+        background-size:1500px 2000px;
+        transition: .2s;
+    }
+    
+    .card{
+        
+        position: relative;
+        margin: 15px;
+        width: 100%;
+        height: 1000px;
+        transition: .2s;
+    }
+
+    .pro_img{
+        position: relative;
+        right: 10px;
+        top: 30px;
+        transition: .2s;
+    }
+
+    .all{
+        position: relative;
+        top: 10px;
+        right: 20px ;
+        transition: .2s;
+    }
+
+    
+    .all .hr2{
+        width: 72%;
+        transition: .2s;
+    }
+
+    .contact{
+        position: relative;
+        left: -270px;
+        top: 20px;
+        transition: .2s;
+        
+    }
+    .contact .hr3{
+        width: 96%;
+        transition: .2s;
+    }
+
+    .filed{
+        position: relative;
+        left: -270px;
+        bottom: 170px;
+        transition: .2s;
+    }
+
+    .filed .hr6{
+        width: 96%;
+        transition: .2s;
+    }
+
+    .work{
+        position: relative;
+        top: 100px;
+        right: 285px;
+        transition: .2s;
+    }   
+
+    .work .hr5{
+        width: 97%;
+        transition: .2s;
+     }
+
+    .skills{
+        position: relative;
+        top: 325px;
+        right: 285px;
+        transition: .2s;
+    }
+    .skills .hr4{
+        width: 97%;
+        transition: .2s;
+     }
+
+     .edit-button{
+        position: absolute;
+        left: 90%;
+        bottom: 165%;
+        transition: .2s;
+     }
+
+     .view-button{
+        position: absolute;
+        left: 81%;
+        top: 94%;
+        transition: .2s;
+     }
+}
+
+@media (max-width: 990px){
+    body{
+        justify-content: center;
+        align-items: center;
+        background-size:1000px 1500px;
+        overflow-y: auto;
+        transition: .2s;
+    }
+    .card{
+        
+        position: relative;
+        margin: 15px;
+        width: 100%;
+        height: 1000px;
+        transition: .2s;
+    }
+
+    .pro_img{
+        position: relative;
+        right: 10px;
+        top: 30px;
+        transition: .2s;
+    }
+
+    .all{
+        position: relative;
+        top: 10px;
+        right: 20px ;
+        transition: .2s;
+    }
+
+    
+    .all .hr2{
+        width: 56%;
+        transition: .2s;
+    }
+
+    .contact{
+        position: relative;
+        left: -270px;
+        top: 20px;
+        transition: .2s;
+    }
+    .contact .hr3{
+        width: 95%;
+        transition: .2s;
+    }
+
+    .filed{
+        position: relative;
+        left: -270px;
+        bottom: 170px;
+        transition: .2s;
+    }
+
+    .filed .hr6{
+        width: 95%;
+        transition: .2s;
+    }
+
+    .work{
+        position: relative;
+        top: 100px;
+        right: 285px;
+        transition: .2s;
+    }   
+
+    .work .hr5{
+        width: 97%;
+        transition: .2s;
+     }
+
+    .skills{
+        position: relative;
+        top: 325px;
+        right: 285px;
+        transition: .2s;
+    }
+    .skills .hr4{
+        width: 97%;
+        transition: .2s;
+     }
+
+     .edit-button{
+        position: absolute;
+        left: 85%;
+        bottom: 165%;
+        transition: .2s;
+     }
+
+     .view-button{
+        position: absolute;
+        left: 65%;
+        top: 89%;
+        transition: .2s;
+        
+     }
+}
+
+@media (max-width: 800px){
+    body{
+        justify-content: center;
+        align-items: center;
+        background-size:1000px 1500px;
+        overflow-y: auto;
+        transition: .2s;
+    }
+    .card{
+        
+        position: relative;
+        margin: 10px;
+        width: 100%;
+        height: 1150px;
+        transition: .2s;
+    }
+
+    .pro_img{
+        position: relative;
+        top: 10px;
+        left: 80px;
+        transition: .2s;
+    }
+    .edit-button{
+        position: absolute;
+        left: 126%;
+        bottom: 240%;
+        transition: .2s;
+        
+     }
+     .all{
+        position: relative;
+        top: 200px;
+        right: 280px;
+        transition: .2s;
+    }
+    .all .hr2{
+        width: 97%;
+        transition: .2s;
+    }
+
+    .contact{
+        position: absolute;
+        left: -270px;
+        top: 720px;
+        transition: .2s;
+    }
+    .contact .hr3{
+       width: 165%;
+       transition: .2s;
+    }
+
+    .filed{
+        position: absolute;
+        left: -270px;
+        top: 880px;
+        transition: .2s;
+    }
+
+    .filed .hr6{
+        width: 165%;
+        transition: .2s;
+     }
+
+    .work{
+        position: relative;
+        top: 410px;
+        right: 285px;
+        transition: .2s;
+    }   
+
+    .work .hr5{
+        width: 95%;
+        transition: .2s;
+     }
+
+    .skills{
+        position: relative;
+        top: 625px;
+        right: 285px;
+        transition: .2s;
+    }
+    .skills .hr4{
+        width: 95%;
+        transition: .2s;
+     }
+
+    
+
+     .view-button{
+        position: absolute;
+        left: 65%;
+        top: 93%;
+        transition: .2s;
+        
+     }
+
+
+}
+
+@media screen and (max-width: 550px){
+
+    body{
+        justify-content: center;
+        align-items: center;
+        background-size:1000px 1500px;
+        overflow-y: auto;
+        transition: .2s;
+    }
+    .card{
+        
+        position: relative;
+        margin: 5px;
+        width: 100%;
+        height: 1150px;
+        transition: .2s;
+    }
+
+    .pro_img{
+        position: relative;
+        top: 10px;
+        left: 80px;
+        transition: .2s;
+    }
+
+    .all{
+        position: relative;
+        top: 200px;
+        right: 280px;
+        transition: .2s;
+    }
+    .all .hr2{
+        width: 97%;
+        transition: .2s;
+    }
+
+    .contact{
+        position: absolute;
+        left: -270px;
+        top: 720px;
+        transition: .2s;
+    }
+    .contact .hr3{
+       width: 165%;
+       transition: .2s;
+    }
+
+    .filed{
+        position: absolute;
+        left: -270px;
+        top: 880px;
+        transition: .2s;
+    }
+
+    .filed .hr6{
+        width: 165%;
+        transition: .2s;
+     }
+
+    .work{
+        position: relative;
+        top: 410px;
+        right: 285px;
+        transition: .2s;
+    }   
+
+    .work .hr5{
+        width: 95%;
+        transition: .2s;
+     }
+
+    .skills{
+        position: relative;
+        top: 625px;
+        right: 285px;
+        transition: .2s;
+    }
+    .skills .hr4{
+        width: 95%;
+        transition: .2s;
+     }
+
+     .edit-button{
+        position: absolute;
+        left: 140%;
+        bottom: 240%;
+        transition: .2s;
+        
+     }
+
+     .view-button{
+        position: absolute;
+        left: 52%;
+        top: 93%;
+        transition: .2s;
+        
+     }
+}
+
+
+
+
+
+
+
+
+

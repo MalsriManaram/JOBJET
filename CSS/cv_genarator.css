@@ -49,20 +49,31 @@
 .body #navbar01 {
     background:linear-gradient(to bottom, #000480c9, #0005a1cb);
 }
-.body .nav-link.mx-lg-2 {
+
+.body #icon2{
+    margin-right: 6px;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.body .navbar-nav .nav-item .nav-link.mx-lg-2 {
+    padding-left: 13px;
     color: #ffffff; 
     font-weight: 400;
 }
 
-.body .nav-link.mx-lg-2:hover{
+.body .navbar-nav .nav-item .nav-link.mx-lg-2:hover{
     color: #949494; 
     font-weight: 600;
     transition: .2s;
 }
 
 .body .for_footer{
-    
-    margin-left: 610px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
 }
 
 #button{
@@ -95,7 +106,7 @@ a{
 .text-dark{color: var(--clr-dark);}
 .text-grey{color: var(--clr-grey);}
 .text-white{color: var(--clr-white);}
-
+ 
 /* backgrounds */
 .bg-blue{background-color: var(--clr-blue);}
 .bg-blue-mid{background-color: var(--clr-blue-mid);}
@@ -317,16 +328,6 @@ a{
     margin: 0.9rem 0;
 }
 
-/* footer */
-.footer{
-    padding: 3rem 0;
-}
-.footer-content p{
-    color: var(--clr-grey);
-}
-.footer-content p span{
-    color: var(--clr-white);
-}
 
 
 /* media queries */
@@ -427,8 +428,8 @@ textarea{
     margin-right: 10px;
 }
 .repeater-add-btn{
-    width: 20px;
-    height: 20px;
+    width: auto;
+    height: auto;
     background-color: var(--clr-blue-mid);
     font-size: 1.6rem;
     color: var(--clr-white);
@@ -580,6 +581,9 @@ textarea{
     .cols-3{
         grid-template-columns: repeat(3, 1fr);
     }
+
+
+
 }
 
 .print-btn-sc{
@@ -588,6 +592,10 @@ textarea{
 
 /* print section */
 @media print{
+    body {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
     body *{
         visibility: hidden;
     }
@@ -631,4 +639,30 @@ textarea{
     height: 100%; /* Match the height of the container */
     float: left;
   }
+
+  @media screen and (max-width:1190px){
+    .left-side{
+        float: none;
+        width: auto;
+    }
+    .right-side{
+        float: none;
+        width: auto;
+        margin-top: -180px;
+    }
+
+  }
+
+
+@media screen and (max-width:990px){
+    .body .navbar-nav .nav-item .nav-link.mx-lg-2  {
+        color: #000000;  
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+    .body .navbar-nav .nav-item .nav-link.mx-lg-2.active {
+        font-weight:bolder;  
+    }
+
+}
 

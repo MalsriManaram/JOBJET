@@ -18,7 +18,15 @@
     color: #cccccc;
 }
 
+.about-page #icon2{
+   background-color: #ffffff8c;
+   padding: 2px;
+   border-radius: 5px;
+}
+
 .footer {
+    position: relative;
+    top: 23px;
     align-items: end;
     color: none;
     text-align: center;
@@ -182,4 +190,15 @@
     padding: 6px 18px 5px; 
     margin-top: 8px; 
     margin-bottom: 5px; 
+}
+
+
+@media screen and (max-width:990px){
+    .about-page .nav-link.mx-lg-2  {
+        color: #000000;  
+        font-weight: 600;
+    }
+    .about-page .nav-link.mx-lg-2.active {
+        font-weight:bolder;  
+    }
 }

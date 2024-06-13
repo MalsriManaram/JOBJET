@@ -3,7 +3,6 @@
     include('includes/header.php');
     include('config.php');
     include('includes/navbar.php'); 
-    include('includes/footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +16,7 @@
 </head>
 
 <body> 
+    
 <div  class="container-for-search">
         <form method="post">
             <input type="text" name="search" class="form-control search-icon-input" placeholder="Enter Employer Name">
@@ -24,7 +24,7 @@
             <button type="submit" name="submit" class="search-button">Search</button>
         </form>
     </div>
-
+ 
     <div class="card03">
     <?php
         $not_search = false;
@@ -79,7 +79,7 @@
                 }
             } 
         }
-
+ 
 
         if(!$not_search) {
 
@@ -121,7 +121,8 @@
         
         ?>
     </div>
+
 </body>
 
 </html>
-<?php include ('includes/footer.php'); ?>
+    <?php include ('includes/footer.php'); ?>

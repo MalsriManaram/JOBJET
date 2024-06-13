@@ -2,8 +2,8 @@
 $page_title = "Edit Profile";
 include('includes/header.php');
 include('config.php');
-include('includes/footer.php');
 include('includes/navbar.php');
+include('includes/footer.php'); 
 $msg = "";
 
 
@@ -360,7 +360,7 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 
-
+    
 
     <script>
         //display uploaded image
@@ -409,7 +409,9 @@ if (isset($_POST['submit'])) {
     </script>
 
 
+
 </body>
 
 </html>
 
+<?php ?>

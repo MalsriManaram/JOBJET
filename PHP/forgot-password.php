@@ -76,7 +76,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/JOBJET/CSS/forfp1.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/JOBJET/CSS/forfp.css" type="text/css" media="all" />
 
     <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
 

@@ -1,41 +1,15 @@
 body{
-    display: flex;
-    justify-content: center;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 150vh;
     overflow-y:auto;
     background-color: rgb(238, 238, 248);
-} 
-
-#navbar01 {
-    background:linear-gradient(to bottom, #3037DD, #0a0f9c); 
-    z-index: 999999;
-}
-.nav-link.mx-lg-2 {
-    color: #ffffff; 
-    font-weight: 400;
-}
-
-.nav-link.mx-lg-2:hover{
-    color: #949494; 
-    font-weight: 600;
-    transition: .2s;
-}
-
-.container-for-search{
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 80px;
- 
-}
-
-.card03{
     opacity: 0;
     transition: opacity 1s ease-in-out; 
     animation: fadeInAnimation 0.5s ease-in-out; 
     animation-fill-mode: forwards; 
-}
+} 
+
+
 
 @keyframes fadeInAnimation {
     from {
@@ -48,11 +22,37 @@ body{
     }
 }
 
-.container {
-    margin-left: 3%;
+
+
+#navbar01 {
+    background:linear-gradient(to bottom, #3037DD, #0a0f9c); 
+    z-index: 999999;
+}
+.nav-link.mx-lg-2 {
+    color: #ffffff;  
+    font-weight: 400;
+}
+
+.nav-link.mx-lg-2:hover{
+    color: #949494; 
+    font-weight: 600;
+    transition: .2s;
+}
+
+
+
+.container-for-search{
     display: flex;
+    justify-content: center;
+    position: relative;
+    top: 80px;
+}
+
+.container {
+    margin-left: 1%;
+    display: flex; 
     flex-wrap: wrap; 
-    justify-content: left;
+    justify-content: center;
     width: 100%;
     max-width: 100%;
 }
@@ -101,23 +101,24 @@ body{
 }
 
 .text-danger{
+    display: flex;
+    justify-content: center;
     position: relative;
-    top: 140px;
+    top: 100px;
     font-size: 28px;
-
-    
+    margin-bottom: 0px;
 }
+
 #mark{
-    margin-left: 70px;
-    width: 60px;
-    height: 60px;
-    margin-bottom: 5px;
-}
+    position: relative;
+    left: 8%;
+    transform: scale(1.50);
 
+}
 
 .data-container {
     position: relative;
-    top: 130px;
+    top: 60px;
     width: calc(21% - 50px); 
     min-height: 100px;
     height: 280px;
@@ -126,31 +127,22 @@ body{
     border-radius: 15px;
     margin: 15px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
-    transform: scale(1); 
+    transform: scale(1);
     transition: transform 0.1s ease;
     z-index: 1;
 }
 
-.for-img:hover .popup-container{
 
-    visibility: visible;
-    opacity: 1;
-}
 
 .data-container:hover{
     transform: scale(1.05);
     z-index: 9999;
 }
 
-@media (max-width: 768px) {
-    .container {
-        justify-content: flex-start;
-    }
 
-    .data-container {
-        width: calc(21% - 50px); 
-        margin-bottom: 100px;
-    }
+.for-img:hover .popup-container{
+    visibility: visible;
+    opacity: 1;
 }
 
 .data-container img{
@@ -269,4 +261,126 @@ a{
     font-size: 12px ;
     text-align: justify;
     padding-bottom: 40px;
+}
+
+@media (max-width: 8100px){
+    .container{
+        margin: 0px;
+    }
+    .data-container {
+        padding: 10px;
+        padding-top: 15px;
+        width: 210px;
+        transition: .5s;
+    }
+}
+
+
+@media (max-width: 1295px){
+    .container{
+        margin: 0px;
+    }
+    .data-container {
+        margin: 0px;
+        margin-left: 7px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 210px;
+        transition: .5s;
+    }
+    .popup-container{
+        display: none;
+    }
+    #mark{
+        position: relative;
+        left: 105px;
+
+    }
+}
+ 
+
+@media (max-width: 1125px){
+
+
+    .data-container {
+        width:210px; 
+        transition: .5s;
+    }
+    .popup-container{
+        display: none;
+    }
+    #mark{
+        position: relative;
+        left: 110px;
+
+    }
+}
+
+@media screen and (max-width:990px){
+    .nav-link.mx-lg-2 {
+        color: #000000;  
+        font-weight: 600;
+    }
+    .nav-link.mx-lg-2.active {
+        font-weight:bolder;  
+    }
+}
+
+
+@media screen and (max-width:800px){
+    body{
+        min-height: 230vh;
+
+    }
+
+    .container-for-search{
+        position: relative;
+        right: 10%;
+        transition: .5s;
+    }
+    
+    .form-control{
+        width:240px;
+        transition: .2s;
+    }
+
+    .search-button {
+        margin-left: -120px;
+        transition: .2s;
+    }
+
+
+    .data-container {
+        width: 220px; 
+        transition: .2s;
+    }
+
+    .popup-container{
+        display: none;
+    }
+    #mark{
+        position: relative;
+        left: 110px;
+
+    }
+}
+
+@media screen and (max-width:600px){
+    body{
+        min-height: 240vh;
+
+    }
+    .data-container {
+        width: 199px; 
+        transition: .1s;
+    }
+    .popup-container{
+        display: none;
+    }
+
+    #mark{
+        position: relative;
+        left: 110px;
+
+    }
 }

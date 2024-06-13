@@ -36,8 +36,6 @@ body{
     background-color: rgb(250, 250, 250);
     border-radius: 50px;
     border:none;
-
-
 }
 
 .form-control::placeholder{
@@ -55,7 +53,7 @@ body{
     
   }
 
-
+ 
 .for-filter-container{
     position: absolute;
     top: 180px;
@@ -78,6 +76,7 @@ body{
 }
 
 .filter-btn{
+    display: inline-block;
     text-align: left;
     padding-left: 10px;
     padding-top: 5px;
@@ -175,7 +174,6 @@ body{
 }
 
 .for-img:hover .popup-container{
-
     visibility: visible;
     opacity: 1;
 }
@@ -185,16 +183,6 @@ body{
     z-index: 9999;
 }
 
-@media (max-width: 768px) {
-    .container {
-        justify-content: flex-start;
-    }
-
-    .data-container {
-        width: calc(25% - 40px); 
-        margin-bottom: 100px;
-    }
-}
 
 .data-container img{
     margin: 4%;
@@ -240,7 +228,7 @@ a{
     border-radius: 14px;
     transform: translateX(-50%);
     visibility: hidden;
-    opacity: 0;
+    opacity: 0; 
     transition: opacity 0.5s ease;
     z-index: 9999;
 }
@@ -274,6 +262,213 @@ a{
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0.2, 0.2);
 }
+
+
+
+
+@media (max-width: 1295px){
+    
+    .container{
+        display: flex;
+        justify-content: center;
+        width: calc(100% - 130px); 
+
+    }
+
+    .data-container {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+        padding-top: 10px;
+        width: 225px;
+        transition: .2s;
+    }
+    .popup-container{
+        display: none;
+    }
+}
+
+
+@media (max-width: 1125px){
+
+    .container{
+        display: flex;
+        justify-content: center;
+        width: calc(100% - 150px); 
+
+    }
+
+    .data-container {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+        padding-top: 10px;
+        width: 225px;
+        transition: .2s;
+    }
+
+    .popup-container{
+        display: none;
+    }
+
+    .for-filter-container{
+
+        padding-bottom: 100%;
+        transition: .2s;
+    }
+}
+
+@media screen and (max-width:990px){
+
+    .nav-link.mx-lg-2:hover {
+        color: #7c7c7c; 
+    }
+    .nav-link.mx-lg-2.active {
+        font-weight:bolder;  
+    }
+}
+
+@media (max-width: 980px){
+    
+    .container-for-search{
+        width: 260px;
+        transition: .2s;
+    }
+
+    .form-control{
+        margin-left: 15px;
+        transition: .2s;
+    }
+
+
+    .for-filter-container{
+        width: 260px;
+        padding-bottom: 200%;
+        transition: .2s;
+    }
+    
+    .container{
+        display: flex;
+        justify-content: center;
+        width: calc(100% - 160px); 
+
+    }
+
+    .data-container {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+        padding-top: 10px;
+        width: 235px;
+        transition: .2s;
+    }
+
+    footer{
+        z-index: 2;
+    }
+
+    
+    .popup-container{
+        display: none;
+    }
+
+}
+
+
+@media screen and (max-width:800px){
+
+    .container-for-search{
+        height: 150px;
+        width: 100%;
+        transition: .2s;
+        
+    }
+
+    .container-for-search img{
+        display: none;
+
+    }
+
+    #icon {
+        visibility:visible;
+
+    }
+
+    .form-control{
+        position: relative;
+        left: 4%;
+        bottom: 40px;
+        width: 90%;
+        transition: .2s;
+    }
+    
+    .for-filter-container{
+        width: 100%;
+        margin: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        background: none;
+        transition: .2s;
+
+    }
+    
+    .filter-btn {
+        position: relative;
+        bottom: 30px;
+        font-size: 13px;
+        min-width: 120.7px;
+        padding: 2px;
+        margin: 0px;
+        text-align: center;
+        flex: 100 calc(30% - 40px);
+        z-index: 2;
+        transition: .2s;
+    }
+    .filter-btn:hover, .for-filter-container .filter-btn:nth-child(4n):hover{
+        padding: 2px;
+        text-align: center;
+        transform: scale(1);
+        transition: .2s; 
+    }
+
+    .for-filter-container p{
+        display: none;
+    }
+
+    .for-job-container{
+        display: inline;
+        position: relative;
+        top: 120px;
+        left: 0px;
+        z-index: 1;
+        transition: .2s;
+        width: max-content;
+    }
+    .container{
+        margin: 0px;
+        padding: 0px;
+        width: max-content;
+    }
+
+    .data-container {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+        padding-top: 10px;
+        margin-left: 8px;
+        margin-right: 3px;
+        width: 228px;
+        transition: .2s;
+    }
+
+    
+    .popup-container{
+        display: none;
+    }
+
+}
+
+
 
 
 

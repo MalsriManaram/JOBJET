@@ -50,56 +50,52 @@ if(isset($_GET['id'])) {
                         mysqli_stmt_bind_param($stmt_insert_image, "sssss", $your_name, $contact_no, $your_email, $message, $new_img_name);
                         mysqli_stmt_execute($stmt_insert_image);
 
+                    
+            
 
-                
-                        $msg .= "<div class='positive-img-msg'>The Rrespond Sent Successfully!</div>";
+                        $mail = new PHPMailer(true);
+
+                        try {
+                            //Server settings
+                            //$mail->SMTPDebug = SMTP::DEBUG_SERVER; // Commented out to remove debug output
+                            $mail->isSMTP(); //Send using SMTP
+                            $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
+                            $mail->SMTPAuth = true; //Enable SMTP authentication
+                            $mail->Username = 'jobjet7878@gmail.com'; //SMTP username
+                            $mail->Password = 'zxje isdo ulpd orcd'; //SMTP password
+                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
+                            $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                            //Recipients
+                            $mail->setFrom('jobjet7878@gmail.com');
+                            $mail->addAddress($company_mail);
+
+                            //Content
+                            $mail->isHTML(true);
+                            $mail->Subject = 'JobJet - CV Information - ' . $your_name;
+                            $mail->Body = '<h1>CV Information</h1>' .
+                            '<p><b>Name: </b>' . $your_name . '</p>' .
+                            '<p><b>Email: </b>' . $your_email . '</p>' .
+                            '<p><b>Message: </b>' . $message . '</p>' .
+                            '<p><b>CV: </b></p>' .
+                            '<br>';
+                            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                            $mail->addStringAttachment(file_get_contents($img_upload_path), $new_img_name, 'base64', 'image/jpeg');
+                            $mail->send();
+                            
+                            $msg .= "<div class='positive-img-msg'>The Rrespond Sent Successfully!</div>";
+                            
+                        } catch (Exception $e) {
+                            $msg = "<div class='negative-img-msg-error'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+                        }
+
                     } else {
                         $msg .= "<div class='negative-img-msg'>Invalid image format or size.<br> Please upload a valid image (under 3MB).</div>";
-                    }
-                }
-                
-
-
-
-            $mail = new PHPMailer(true);
-
-            try {
-                //Server settings
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER; // Commented out to remove debug output
-                $mail->isSMTP(); //Send using SMTP
-                $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
-                $mail->SMTPAuth = true; //Enable SMTP authentication
-                $mail->Username = 'jobjet7878@gmail.com'; //SMTP username
-                $mail->Password = 'zxje isdo ulpd orcd'; //SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
-                $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-                //Recipients
-                $mail->setFrom('jobjet7878@gmail.com');
-                $mail->addAddress($company_mail);
-
-                //Content
-                $mail->isHTML(true);
-                $mail->Subject = 'JobJet - CV Information - ' . $your_name;
-                $mail->Body = '<h1>CV Information</h1>' .
-                '<p><b>Name: </b>' . $your_name . '</p>' .
-                '<p><b>Email: </b>' . $your_email . '</p>' .
-                '<p><b>Message: </b>' . $message . '</p>' .
-                '<p><b>CV: </b></p>' .
-                '<br>';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-                $mail->addStringAttachment(file_get_contents($img_upload_path), $new_img_name, 'base64', 'image/jpeg');
-
-                $mail->send();
-                
-            } catch (Exception $e) {
-                $msg = "<div class='negative-img-msg'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
-            }
-
-            $msg .= "<div class='positive-img-msg'>The Rrespond Sent Successfully!</div>";
+                        }
+                } 
+         
         }
-}
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -115,13 +111,16 @@ if(isset($_GET['id'])) {
     <?php if(isset($_GET['id'])): ?> 
 
         <div class="content">
+        <?php echo $msg; ?>
             <button class="apply_button" id="applyBtn">Apply By Email</button>
             <button class="print_button" id="print">Print</button>
 
-            <h3><?= $row['adds_heading']; ?></h3>
+            <h3><?= $row['adds_heading']; ?></h3> 
+
             <img src="/JOBJET/JOBS_IMG/<?= $row['ads_img']; ?>" alt="Ads Image">
 
             <div class="card">
+
                 <button class="apply_button" id="applyBtn1">Apply By Email</button>
                 <button class="print_button" id="print1">Print</button>
             </div>
@@ -131,7 +130,7 @@ if(isset($_GET['id'])) {
 
         <div class="card2" id="applyForm" >
         <h3>Apply By Email</h3>
-            <?php echo $msg; ?>
+            
             <form action="" form method="POST" enctype="multipart/form-data" id="emailForm">
         
                 

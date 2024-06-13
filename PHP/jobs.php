@@ -42,7 +42,7 @@ include('includes/navbar.php');
 
   <div class="for-job-container" id="dataContainer">
     <?php
-    include('job_search.php');
+      include('job_search.php');
     ?>
   </div>
 
@@ -85,3 +85,4 @@ include('includes/navbar.php');
 
 </html>
 <?php include('includes/footer.php'); ?>
+ 
