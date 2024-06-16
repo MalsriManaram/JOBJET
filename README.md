@@ -42,12 +42,12 @@ These are some Screenshot of the developed website,
 
 ![Screenshot 2024-06-03 163342](https://github.com/MalsriManaram/JOBJET/assets/156543575/9cdecd05-cc30-4c5d-8f9e-59577354db47)
 
-![Screenshot 2024-06-03 163354](https://github.com/MalsriManaram/JOBJET/assets/156543575/3f8c7678-d980-41da-b474-db18b531a86d)
+![CV-Genarator-JobJet](https://github.com/MalsriManaram/JOBJET/assets/156543575/7eaaf152-37d2-4fa9-a1b2-2909ce7d8d53)
 
 ![Screenshot 2024-06-03 163403](https://github.com/MalsriManaram/JOBJET/assets/156543575/d6019add-54b0-4700-80e5-7b68f6359bf4)
 
-![Screenshot 2024-06-03 163416](https://github.com/MalsriManaram/JOBJET/assets/156543575/bd257965-1660-4ad5-9211-15000f73eab2)
 
+![About-Us-JobJet (1)](https://github.com/MalsriManaram/JOBJET/assets/156543575/4c694022-620b-4064-87db-fc245b0275d4)
 
 
 ## Contact Us
