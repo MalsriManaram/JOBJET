@@ -1,189 +1,338 @@
-<?php 
+<?php
+// === 1. SETUP & CONFIGURATION ===
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
-    //Import PHPMailer classes into the global namespace
-    //These must be at the top of your script, not inside a function
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+require './vendor/autoload.php';
+include 'config.php';
 
-    //Load Composer's autoloader
-    require 'vendor/autoload.php';
+$page_title = 'Sign Up Form';
+$msg = '';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-    $page_title= "Sign Up Form";
-    include('includes/header.php'); 
-    include ('config.php');
-    include ('includes/footer.php');
+// === 2. HANDLE MESSAGES AFTER REDIRECT ===
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+    $msg = "<div class='alert alert-success'>Registration successful! We've sent a verification link to your email address.</div>";
+}
+if (isset($_GET['error']) && $_GET['error'] == 'mail') {
+    $msg = "<div class='alert alert-danger'>We could not send the verification email. Please try again.</div>";
+}
+if (isset($_GET['error']) && $_GET['error'] == 'exists') {
+    $msg = "<div class='alert alert-danger'>This email address already exists. Please try another one.</div>";
+}
+if (isset($_GET['error']) && $_GET['error'] == 'password') {
+    $msg = "<div class='alert alert-danger'>Password and Confirm Password do not match.</div>";
+}
+if (isset($_GET['error']) && $_GET['error'] == 'db') {
+    $msg = "<div class='alert alert-danger'>Something went wrong with the registration. Please try again.</div>";
+}
 
-    $msg = "";
+// === 3. HANDLE FORM SUBMISSION ===
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $first_name = trim($_POST['first_name']);
+    $last_name = trim($_POST['last_name']);
+    $email = trim($_POST['Email']);
+    $password = $_POST['Password'];
+    $confirm_password = $_POST['confirm_password'];
 
-    if (isset($_POST['submit'])){
+    if ($password !== $confirm_password) {
+        header('Location: signup.php?error=password');
+        exit;
+    } else {
+        $stmt = $conn->prepare('SELECT id FROM users WHERE email = ?');
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->store_result();
 
-        $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
-        $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
-        $Email = mysqli_real_escape_string($conn, $_POST['Email']);
-        $Password = mysqli_real_escape_string($conn, md5($_POST['Password']));
-        $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm_password']));
-        $code = mysqli_real_escape_string($conn, md5(rand()));
-        $identify = mysqli_real_escape_string($conn, rand());
-        
-                    
-        if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email='{$Email}'")) > 0){
-           
-            $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #f8d7da; border-radius: 5px; color: #000000; border: 1px solid #f5c6cb; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'> {$Email} - This email address has been already exists.</div>";
+        if ($stmt->num_rows > 0) {
+            header('Location: signup.php?error=exists');
+            exit;
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            $code = bin2hex(random_bytes(32));
 
-        } 
-        else{
-            
-            if ($Password === $confirm_password){
-                $sql = "INSERT INTO users (first_name, last_name, email, password, code, identify ) VALUES ('{$first_name}', '{$last_name}', '{$Email}', '{$Password}', '{$code}', '{$identify}')";
-                $result = mysqli_query($conn, $sql);
+            // === Try sending email FIRST ===
+            $mail = new PHPMailer(true);
+            try {
+                $mail->SMTPDebug = SMTP::DEBUG_OFF;
+                $mail->isSMTP();
+                $mail->Host = $_ENV['SMTP_HOST'];
+                $mail->SMTPAuth = true;
+                $mail->Username = $_ENV['SMTP_USER'];
+                $mail->Password = $_ENV['SMTP_PASS'];
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port = $_ENV['SMTP_PORT'];
 
-                if($result){
-                        //this code uses for get the verification link to the email
-                        echo "<div style='display: none;'>";
+                $mail->setFrom($_ENV['SMTP_USER'], 'JobJet');
+                $mail->addAddress($email, $first_name.' '.$last_name);
 
-                                        //Create an instance; passing `true` enables exceptions
-                    $mail = new PHPMailer(true);
+                $mail->isHTML(true);
+                $mail->Subject = 'Verify Your Email Address for JobJet';
+                $verification_link = 'http://localhost/JOBJET/PHP/login.php?verification='.$code;
 
-                    try {
-                        //Server settings
-                        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                        $mail->isSMTP();                                            //Send using SMTP
-                        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                        $mail->Username   = 'jobjet7878@gmail.com';                     //SMTP username
-                        $mail->Password   = 'zxje isdo ulpd orcd';                               //SMTP password
-                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                $mail->Body = "<table width='100%' cellpadding='0' cellspacing='0' border='0' style='background:#f7f9fc; padding:40px 0; font-family:Arial, sans-serif;'>
+                            <tr>
+                                <td align='center'>
+                                <table width='600' cellpadding='0' cellspacing='0' border='0' style='background:#ffffff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:hidden;'>
+                                    
+                                    <!-- Header -->
+                                    <tr>
+                                    <td style='background:#0d6efd; padding:20px; text-align:center; color:#fff; font-size:22px; font-weight:bold;'>
+                                        Welcome to JobJet 🚀
+                                    </td>
+                                    </tr>
+                                    
+                                    <!-- Body -->
+                                    <tr>
+                                    <td style='padding:30px; color:#333;'>
+                                        <h2 style='margin:0 0 20px 0; font-size:20px; color:#0d6efd;'>Hi ".htmlspecialchars($first_name).",</h2>
+                                        <p style='font-size:16px; line-height:1.6;'>
+                                        Thank you for joining <strong>JobJet</strong>!<br>
+                                        Please verify your email to activate your account.
+                                        </p>
+                                        
+                                        <p style='text-align:center; margin:30px 0;'>
+                                        <a href='".$verification_link."' 
+                                            style='display:inline-block; background:#0d6efd; color:#fff; padding:14px 28px; 
+                                                text-decoration:none; font-size:16px; border-radius:5px; font-weight:bold;'>
+                                            ✅ Verify My Email
+                                        </a>
+                                        </p>
+                                        
+                                        <p style='font-size:14px; color:#555;'>
+                                        If the button doesn’t work, copy and paste this link into your browser:<br>
+                                        <a href='".$verification_link."' style='color:#0d6efd;'>".$verification_link."</a>
+                                        </p>
+                                    </td>
+                                    </tr>
+                                    
+                                    <!-- Footer -->
+                                    <tr>
+                                    <td style='background:#f1f1f1; padding:15px; text-align:center; font-size:12px; color:#777;'>
+                                        © ".date('Y').' JobJet. All rights reserved.<br>
+                                        If you didn’t sign up, you can ignore this email.
+                                    </td>
+                                    </tr>
+                                    
+                                </table>
+                                </td>
+                            </tr>
+                            </table>
+                            ';
 
-                        //Recipients
-                        $mail->setFrom('jobjet7878@gmail.com');
-                        $mail->addAddress($Email);
-                        
+                // If mail is sent successfully → THEN insert user + profile
+                if ($mail->send()) {
+                    // Start a transaction so both inserts are atomic
+                    $conn->begin_transaction();
 
-                        //Content
-                        $mail->isHTML(true);                                  
-                        $mail->Subject = 'JobJet - Verification Email ';
-                        $mail->Body    = 'Hear is the Verification link <b><a href="http://localhost:8080/JOBJET/PHP/login.php/?verification='.$code.'">http://localhost:8080/JOBJET/PHP/login.php/?verification='.$code.'</a></b>';
-                        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    $success = true;
 
-                        $mail->send();
-                        echo 'Message has been sent';
-                     } catch (Exception $e) {
-                        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                    // 1) Insert into users
+                    $insert_stmt = $conn->prepare('INSERT INTO users (first_name, last_name, email, password, code) VALUES (?, ?, ?, ?, ?)');
+                    if (!$insert_stmt) {
+                        $success = false;
+                        error_log('Prepare users insert failed: '.$conn->error);
+                    } else {
+                        $insert_stmt->bind_param('sssss', $first_name, $last_name, $email, $hashed_password, $code);
+                        if (!$insert_stmt->execute()) {
+                            $success = false;
+                            error_log('Execute users insert failed: '.$insert_stmt->error);
+                        }
                     }
-                 
-                    echo "</div>";
-                    $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #dad7f8; border-radius: 5px; color: #000000; border: 1px solid #cdc6f5; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>We've send a verification link on your email address</div>";
-                }
-                else{
-                    $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #f8d7da; border-radius: 5px; color: #000000; border: 1px solid #f5c6cb; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>Something went wrong. </div>"; 
-                }
 
-            }
-            else{
-                 $msg = "<div style='font-size: 13px; font-weight: 400; font-family: Poppins, sans-serif; background-color: #f8d7da; border-radius: 5px; color: #000000; border: 1px solid #f5c6cb; padding: 6px 18px 5px; margin-top: 8px; margin-bottom: 5px; font-family: 'Poppins', sans-serif;'>Password and Confirm Password do not match</div>";  
-            }
+                    // 2) Insert into profile (only if users insert succeeded)
+                    if ($success) {
+                        // get the inserted user id
+                        $user_id = $conn->insert_id;
+                        $gender = '';
+                        // build full name
+                        $full_name = trim($first_name.' '.$last_name);
 
+                        $profile_stmt = $conn->prepare('INSERT INTO profile (p_id, full_name, pro_email, gender) VALUES (?, ?, ?, ?)');
+                        if (!$profile_stmt) {
+                            $success = false;
+                            error_log('Prepare profile insert failed: '.$conn->error);
+                        } else {
+                            $profile_stmt->bind_param('isss', $user_id, $full_name, $email, $gender);
+                            if (!$profile_stmt->execute()) {
+                                $success = false;
+                                error_log('Execute profile insert failed: '.$profile_stmt->error);
+                            }
+                            $profile_stmt->close();
+                        }
+                    }
+
+                    // Commit or rollback
+                    if ($success) {
+                        $conn->commit();
+                        if (isset($insert_stmt) && $insert_stmt) {
+                            $insert_stmt->close();
+                        }
+                        header('Location: signup.php?success=1');
+                        exit;
+                    } else {
+                        $conn->rollback();
+                        if (isset($insert_stmt) && $insert_stmt) {
+                            $insert_stmt->close();
+                        }
+                        // optionally: clear any partial cookie / data here
+                        header('Location: signup.php?error=db');
+                        exit;
+                    }
+                } else {
+                    // Mail failed
+                    header('Location: signup.php?error=mail');
+                    exit;
+                }
+            } catch (Exception $e) {
+                header('Location: signup.php?error=mail');
+                exit;
+            }
         }
-
-
+        $stmt->close();
     }
-
-
-
+}
+$conn->close();
 ?>
 
 
+
 <!DOCTYPE html>
-<html lang="zxx">
-    <head> 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Login Form">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($page_title); ?></title>
 
-       
-        
-        <link rel="stylesheet" href="/JOBJET/CSS/signup.css" type="text/css" media="all" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        
+    <link rel="stylesheet" href="/JOBJET/CSS/signup.css" type="text/css" media="all" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    </head>
-    <body>
-                        <div id="card">
-                        
-                            <div class="card2" >
-                            <a href="login.php"><img src="/JOBJET/IMAGERS/reject.png" class="img01" alt="exit" ></a>
-                            <?php echo $msg; ?>
-                                <form action="" method="Post">
-                                
-                                    <h5 class= "heading1">Sign Up</h5>
-                                        <div class="form">
-                                            <label for="first Name" class="labels">First Name</label>
-                                            <input type="text" name="first_name" class="form-control" value="<?php if (isset($_POST['submit'])) { echo $first_name; } ?>" placeholder="Enter Your First Name" required>
-                                        </div>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+            <div class="card signup-card flex-md-row">
+                <div class="row g-0 w-100">
+                
+                <!-- Left Side (Image - 50%) -->
+                <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center p-0">
+                <img src="../IMAGERS/SIGNUP.png" alt="Signup Image" class="img-fluid w-100 h-100 rounded-start object-fit-cover">
+                </div>
 
-                                        <div >
-                                            <label for="last Name" class="labels">Last Name</label>
-                                            <input type="text" name="last_name" class="form-control"  value="<?php if (isset($_POST['submit'])) { echo $last_name; } ?>" placeholder="Enter Your Last Name" required>
-                                        </div>
 
-                                        <div >
-                                            <label for="Email" class="labels">Email</label>
-                                            <input type="email" class="form-control" name="Email" aria-describedby="emailHelp"   value="<?php if (isset($_POST['submit'])) { echo $Email; } ?>" placeholder="yourname@gmail.com" required>
-                                            
-                                        </div>
-
-                                        <div >
-                                            <label for="Password" class="labels">Password</label>
-                                            <input type="password" name="Password" class="form-control" id="password"  pattern=".{15,}" maxlength="15" placeholder="Enter Your Password" required >
-                                            <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                                                
-                                                <i class="fas fa-eye"></i>
-                                            </span>
-                                        </div>
-
-                                        <div>
-                                            <label for="Password" class="label0">Confirm Password</label>
-                                            <input type="password" name="confirm_password" class="form-control" id="confirmPassword" pattern=".{15,}" maxlength="15" placeholder="Enter Your Confirm Password" required>
-
-                                            <span class="toggle-password1" onclick="togglePasswordVisibility('confirmPassword')">
-                                                <i class="fas fa-eye"></i>
-                                            </span>
-
-                                            <div id="registered" >Already Registered? <a href="login.php" class="signup">Log In</a> </div>
-                                        
-                                        </div>
-
-                                        <div >
-                                            <button type="submit" name="submit" class="btn btn-primary" id="button1" >Register</button>
-                                        </div>
-                                    </form>
-                            </div>
-                            </div>
+                <!-- Right Side (Form - 50%) -->
+                <div class="col-md-6">
+                    <div class="card-body p-4 p-md-5 position-relative">                    
+                    <!-- Close Button -->
+                    <div class="position-absolute top-0 end-0 m-4">
+                        <a href="login.php" class="btn-close" aria-label="Close"></a>
                     </div>
 
-        
-        <script>
-        function togglePasswordVisibility(fieldId) {
-            var passwordField = document.getElementById(fieldId);
-            var toggleButton = passwordField.nextElementSibling; 
+                    <h2 class="text-center fw-bold mb-4">Create an Account</h2>
 
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+                    <form id="signupForm" action="" method="post" class="needs-validation" novalidate>
+                        <?php echo $msg; ?>
+
+                        <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstNameInput" class="form-label">First Name</label>
+                            <input type="text" placeholder="First Name" class="form-control" id="firstNameInput" name="first_name" value="<?php echo isset($first_name) ? htmlspecialchars($first_name) : ''; ?>" required>
+                            <div class="invalid-feedback">First name is required.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastNameInput" class="form-label">Last Name</label>
+                            <input type="text" placeholder="Last Name" class="form-control" id="lastNameInput" name="last_name" value="<?php echo isset($last_name) ? htmlspecialchars($last_name) : ''; ?>" required>
+                            <div class="invalid-feedback">Last name is required.</div>
+                        </div>
+                        </div>
+
+                        <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email Address</label>
+                        <input type="email" placeholder="Enter Your Email Address" class="form-control" id="emailInput" name="Email" value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+
+                        <div class="mb-3">
+                        <label for="passwordInput" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" placeholder="Enter Your Password" class="form-control text-danger" id="passwordInput" name="Password" required pattern="(?=.*\d)(?=.*[a-z]).{8,}" aria-describedby="passwordHelp">
+                            <span class="input-group-text rounded-end toggle-password" onclick="togglePasswordVisibility('passwordInput')"><i class="fas fa-eye"></i></span>
+                            <div class="invalid-feedback text-danger">Password must be at least 8 characters long and include a number.</div>
+                        </div>
+                        <div id="passwordHelp" class="form-text">Min. 8 characters, with at least one letter and one number.</div>
+                        </div>
+
+                        <div class="mb-4">
+                        <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <input type="password" placeholder="Enter Your Confirm Password" class="form-control" id="confirmPasswordInput" name="confirm_password" required>
+                            <span class="input-group-text toggle-password rounded-end" onclick="togglePasswordVisibility('confirmPasswordInput')"><i class="fas fa-eye"></i></span>
+                            <div class="invalid-feedback text-danger">Please confirm your password.</div>
+                        </div>
+                        </div>
+
+                        <div class="d-grid">
+                        <button id="registerButton" name="submit" type="submit" class="btn btn-primary btn-lg">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            <span class="button-text">Register</span>
+                        </button>
+                        </div>
+
+                        <p class="text-center mt-4 form-text">
+                        Already have an account? <a href="login.php" class="text-decoration-none fw-bold">Log In</a>
+                        </p>
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password visibility toggle function (reusable for both fields)
+        function togglePasswordVisibility(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
             } else {
-                passwordField.type = "password";
-                toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+                field.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
             }
         }
+
+        // Bootstrap form validation and button spinner logic
+        (() => {
+            'use strict';
+            const form = document.getElementById('signupForm');
+            const registerButton = document.getElementById('registerButton');
+            const spinner = registerButton.querySelector('.spinner-border');
+            const buttonText = registerButton.querySelector('.button-text');
+
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    // If form is valid, show spinner
+                    registerButton.disabled = true;
+                    spinner.classList.remove('d-none');
+                    buttonText.textContent = 'Processing...';
+                }
+                form.classList.add('was-validated');
+            }, false);
+        })();
     </script>
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
-     <script src="/JOBJET/JavaScript/jquery.min.js"></script>
-
-    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
-
-<?php include('includes/footer.php'); ?>

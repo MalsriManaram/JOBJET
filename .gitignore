@@ -1,0 +1,34 @@
+# Environment files
+/PHP/.env
+
+# Composer dependencies
+/PHP/vendor/
+/PHP/composer.lock
+
+# Node dependencies (if using npm/yarn)
+node_modules/
+/PHP/package-lock.json
+/PHP/yarn.lock
+
+# Uploaded files
+UPLOADED_CV/
+UPLOADED_IMG/
+APPLIERS_CV/
+# JOBS_IMG/
+# TOP_EMPLOYERS_IMG/
+
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Cache
+.cache/
+*.cache
+
+# Misc
+*.bak
+*.tmp
