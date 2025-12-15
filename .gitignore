@@ -1,19 +1,18 @@
 # Environment files
-/PHP/.env
+.env
 
 # Composer dependencies
-/PHP/vendor/
-/PHP/composer.lock
+/vendor/
+/composer.lock
 
 # Node dependencies (if using npm/yarn)
 node_modules/
-/PHP/package-lock.json
-/PHP/yarn.lock
+/package-lock.json
+/yarn.lock
 
 # Uploaded files
-UPLOADED_CV/
-UPLOADED_IMG/
-APPLIERS_CV/
+public/assets/storage/
+
 # JOBS_IMG/
 # TOP_EMPLOYERS_IMG/
 

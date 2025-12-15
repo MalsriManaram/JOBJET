@@ -1,0 +1,141 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 30px 15px;
+  background: linear-gradient(to left, #1c68da, #1d83ff);
+  font-family: Inter, system-ui;
+}
+
+.main-card {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  animation: fadeInAnimation 0.5s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.hr1 {
+  color: black;
+}
+
+.form-control {
+  border-radius: 50px;
+  height: 42px;
+  background: #f1f1f1;
+}
+
+.search-btn {
+  border-radius: 50px;
+  background: linear-gradient(to right, #000, #181818);
+  color: #fff;
+  padding: 8px 25px;
+  border: none;
+}
+
+.search-btn:hover {
+  background: #2e2e2e;
+}
+
+.search-icon-input {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="rgba(0,0,0,.54)"/></svg>');
+  background-repeat: no-repeat;
+  background-position: calc(8px) center;
+  background-size: 25px 25px;
+  padding-left: 36px;
+}
+
+.form-control {
+  height: 40px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 50px;
+}
+
+.form-control::placeholder {
+  color: #b1b1b1;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.table thead {
+  background: linear-gradient(to right, #3037dd, #0075ff);
+  color: #fff;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.proimg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.view-button {
+  background: linear-gradient(to right, #3037dd, #0075ff);
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.view-button:hover {
+  background: #040483;
+  color: #fff;
+}
+
+.table-responsive {
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 600px) {
+  th {
+    font-size: 12px;
+    transition: 0.2s;
+  }
+  td {
+    font-size: 12px;
+    transition: 0.2s;
+  }
+  .td {
+    width: 30%;
+    transition: 0.2s;
+  }
+
+  .view-button {
+    font-size: 0;
+  }
+
+  .view-button::after {
+    content: "View";
+    font-size: 14px;
+  }
+}
