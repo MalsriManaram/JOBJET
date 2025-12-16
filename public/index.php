@@ -110,8 +110,6 @@ switch ($request) {
         http_response_code(404);
         $page_title = '404 - Not Found';
         require LAYOUTS.'header.php';
-        require LAYOUTS.'navbar.php';
         require PAGES.'404.php';
-        require LAYOUTS.'footer.php';
         break;
 }

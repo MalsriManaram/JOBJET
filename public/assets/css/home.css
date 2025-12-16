@@ -5,7 +5,7 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
   overflow: hidden;
-  background: url("../images/website-images/Home_BG.jpg") center/cover;
+  background: url("../images/website-images/Home_BG.png") center/cover;
   background-position: 0px -40px;
 }
 
@@ -32,7 +32,7 @@ body {
 .content {
   width: 100%;
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 10%;
   transform: translateY(-50%);
   text-align: left;
@@ -51,7 +51,7 @@ body {
 }
 .content p {
   margin: 20px auto;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 25px;
 }
 
@@ -72,7 +72,7 @@ body {
 }
 
 .span1 {
-  background: #029eff;
+  background: linear-gradient(to right, #252ac9, #0057ba);
   height: 100%;
   width: 0;
   border-radius: 30px;
@@ -88,7 +88,7 @@ body {
 }
 
 .find_jobs:hover {
-  border: none;
+  border-color: transparent;
 }
 
 /*  for the icons */
@@ -131,6 +131,11 @@ body {
 .social-menu ul li a:hover {
   transform: translate(-10px, 0);
   background-color: #365282;
+}
+
+footer p {
+  color: rgb(255, 255, 255) !important;
+  font-weight: normal;
 }
 
 @media screen and (max-width: 1280px) {

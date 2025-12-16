@@ -1,5 +1,5 @@
 <?php
-$page_title = 'About Us';
+$page_title = 'Contact Us';
 include LAYOUTS.'header.php';
 include LAYOUTS.'navbar.php';
 include CONFIG.'config.php';
@@ -43,48 +43,41 @@ if (isset($_POST['submit'])) {
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        $msg = "<div class='confirm_msg'>Your Feedback Sent</div>";
+        $msg = "<div class='confirm_msg'>Your Feedback Sent Successfully!</div>";
     } catch (Exception $e) {
-        $msg = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $msg = "<div class='confirm_msg' style='background-color: #ffebee; color: #c62828; border: 1px solid #ef9a9a;'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
     }
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/JOBJET/CSS/contatctus.css">
-</head>
-<body class='about-page'>
+
+<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/contatctus.css">
+
+<main class='about-page'>
     <section class="contact">
         
         <div class="content">
             <h2>Contact Us</h2>
-            <p>Need to find out more details on Job Jet Group or any of our subsidiaries please feel free to contact us through 
-                <br>phone, email or simply by filling out the form given below. Our team members will contact you promptly.</p>
+            <p>We're here to help! Whether you have questions about our platform, need assistance with job listings, or want to provide feedback, feel free to reach out. Our team is dedicated to providing the best support to job seekers and employers alike.</p>
         </div>
         <div class="container">
             <div class="contactInfo">
                 <div class="box">
-                    <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                    <div class="icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                     <div class="text">
                         <h3>Address</h3>
-                        <p>Colombo,
-                        <br>Rathmalana</p>
+                        <p>Colombo,<br>Rathmalana, Sri Lanka</p>
                     </div>
                 </div>
                 <div class="box">
-                    <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    <div class="icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
                     <div class="text">
                         <h3>Phone</h3>
                         <p>071 3588046 – Malsri</p>
                     </div>
                 </div>
                 <div class="box">
-                    <div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+                    <div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
                     <div class="text">
                         <h3>Email</h3>
                         <p>jobjet7878@gmail.com</p>
@@ -105,25 +98,28 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="inputbox">
                         <textarea required="required" name="Message"></textarea>
-                        <span>Type your Message.</span>
+                        <span>Type your Message...</span>
                     </div>
                     <div class="inputbox">
                         <button class="button_submit" type="submit" name="submit">Send</button>
                     </div>
                 </form>
             </div>
+            <div class="map">
+            <p style="color: white; font-weight: bold; font-size: 25px; margin-bottom: 10px;">Location:</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.9160000000004!2d79.87800000000001!3d6.8210000000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b8b0a000001%3A0x9e8e43b4!2sRatmalana%2C%20Dehiwala-Mount%20Lavinia!5e0!3m2!1sen!2slk!4v1720000000000" width="1200px" height="500px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="/JOBJET/JavaScript/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</main>
 
-</body>
-
-<footer class="footer">
-    <img class="img" src="/JOBJET/IMAGERS/copyright_white.png" alt="Developed by Tech Titans">
-</footer>
-</html>
-
-
+<?php
+include LAYOUTS.'footer.php';
+?>

@@ -9,6 +9,26 @@ main {
   font-family: Inter, system-ui;
 }
 
+#navbar01 {
+  background-color: rgba(255, 255, 255, 0.038);
+}
+
+.nav-link.mx-lg-2 {
+  color: #000000;
+}
+
+.nav-link.mx-lg-2:hover {
+  color: #000000;
+}
+
+footer {
+  background-color: rgba(255, 255, 255, 0.056) !important;
+}
+
+.nav-link.mx-lg-2 {
+  color: #ffffff;
+}
+
 .main-card {
   margin-top: 40px;
   width: 100%;

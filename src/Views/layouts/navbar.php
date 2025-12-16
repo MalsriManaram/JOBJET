@@ -6,7 +6,7 @@ include SRC.'Controllers/NavbarController.php';
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar01">
     <div class="container-fluid">
         <a class="me-auto" id="icon" href="<?php echo BASE_URL; ?>home">
-            <img src="<?php echo BASE_URL; ?>assets/images/website-images/JOBJET_LOGO.png" alt="JOBJET" width="60px" height="53px">
+            <img class="logo" src="<?php echo BASE_URL; ?>assets/images/website-images/JOBJETLOGO.png" alt="JOBJET" >
         </a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -31,7 +31,7 @@ include SRC.'Controllers/NavbarController.php';
                         <a class="nav-link mx-lg-2<?php echo ($current_page == 'cv_genarator') ? ' active' : ''; ?>" href="<?php echo BASE_URL; ?>cv_genarator">CV Generator</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2<?php echo ($current_page == 'aboutus') ? ' active' : ''; ?>" href="<?php echo BASE_URL; ?>aboutus">About</a>
+                        <a class="nav-link mx-lg-2<?php echo ($current_page == 'aboutus') ? ' active' : ''; ?>" href="<?php echo BASE_URL; ?>aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2<?php echo ($current_page == 'contactus') ? ' active' : ''; ?>" href="<?php echo BASE_URL; ?>contactus">Contact Us</a>

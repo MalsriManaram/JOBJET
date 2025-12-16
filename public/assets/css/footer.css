@@ -1,19 +1,19 @@
 footer {
   position: fixed;
-  bottom: 1px;
+  bottom: -5px;
   text-align: center;
-  padding: 3px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(0, 0, 0, 0.203);
   width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-footer .img {
-  width: 180px;
-  height: auto;
-}
-
-@media screen and (max-width: 768px) {
-  footer {
-    width: 100svw;
-  }
+footer p {
+  color: black;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
