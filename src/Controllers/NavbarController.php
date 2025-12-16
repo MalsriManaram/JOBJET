@@ -5,21 +5,18 @@ include CONFIG.'config.php';
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
-// To remove the navbar from view_resume.php
-if ($current_page === 'view_resume.php') {
-    return;
-}
-
 $loggedIn = isset($_SESSION['id']);
-$profileImage = 'assets/storage/uploads/profile-pics/profile.png';
-$fullName = '';
-$nickName = '';
-$proEmail = '';
 
 if ($loggedIn) {
     $id = $_SESSION['id'];
     $check_user = mysqli_query($conn, "SELECT * FROM `users` WHERE `id` = '$id'");
     mysqli_num_rows($check_user);
+
+    // Fetch user profile image
+    if ($result_user = mysqli_fetch_assoc($check_user)) {
+        $userRow = $result_user;
+        $profileImage = 'assets/storage/uploads/profile-pics/'.(!empty($userRow['pro_img']) ? $userRow['pro_img'] : 'profile.png');
+    }
 
     $select_profile = mysqli_query($conn, "SELECT * FROM `profile` WHERE `p_id` = '$id'");
     $select_workinfo = mysqli_query($conn, "SELECT * FROM `workinfo` WHERE `w_id` = '$id'");
@@ -39,9 +36,5 @@ if ($loggedIn) {
             $fullName = !empty($row['full_name']) ? $row['full_name'] : ($_SESSION['first_name'] ?? '').' '.($_SESSION['last_name'] ?? '');
             $proEmail = !empty($row['pro_email']) ? $row['pro_email'] : $_SESSION['email'];
         }
-    }
-
-    if (isset($_SESSION['pro_img']) && !empty($_SESSION['pro_img'])) {
-        $profileImage = 'assets/storage/uploads/profile-pics/'.$_SESSION['pro_img'];
     }
 }

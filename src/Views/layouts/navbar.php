@@ -47,7 +47,7 @@ include SRC.'Controllers/NavbarController.php';
             <div class="sub-manu-wrap" id="subMenu">
                 <div class="sub-menu">
                     <div class="user-info">
-                        <img class="popup_img" src="<?php echo $profileImage; ?>" alt="Profile Image">
+                        <img class="popup_img" src="<?php echo BASE_URL; ?><?php echo $profileImage; ?>" alt="Profile Image">
                         <p><?php echo $fullName; ?></p>
                         <p1><?php echo $nickName; ?></p1><br>
                         <p2><?php echo $proEmail; ?></p2><br>

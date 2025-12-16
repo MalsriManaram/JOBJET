@@ -72,6 +72,9 @@ switch ($request) {
     case 'profile/view_resume':
         require SRC.'Views/pages/Profile/view_resume.php';
         break;
+    case 'profile/view_my_resume':
+        require SRC.'Views/pages/Profile/view_my_resume.php';
+        break;
 
         // Job related pages
     case 'jobs':

@@ -262,6 +262,7 @@ p:hover {
   text-decoration: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .edit-button:hover,

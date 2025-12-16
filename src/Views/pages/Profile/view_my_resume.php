@@ -1,4 +1,4 @@
-<?php include CONTROLLERS.'Profile/ViewResumeController.php'; ?>
+<?php include CONTROLLERS.'Profile/ViewMyResumeController.php'; ?>
 
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/view_resume.css" type="text/css" media="all" />
 <main>
@@ -8,9 +8,9 @@
             <img class="resume_img" src="<?php echo BASE_URL; ?>assets/storage/uploads/uploaded-resumes/<?php echo $resume_img; ?>" alt="Resume Image" >
         </div>
     <?php } ?>
-        <button class="print_button" id="print">Print</button> 
+    <button class="print_button" id="print">Print</button> 
     </div>
-
+    
 
     <script>
         const printBtn = document.getElementById('print');

@@ -14,7 +14,7 @@ include CONTROLLERS.'ApplyJobController.php';
 
             <h3><?php echo $row['adds_heading']; ?></h3> 
 
-            <img src="<?php echo BASE_URL; ?>assets/images/job-adds/<?php echo $row['ads_img']; ?>" alt="Ads Image">
+            <img class="ads_img" src="<?php echo BASE_URL; ?>assets/images/job-adds/<?php echo $row['ads_img']; ?>" alt="Ads Image">
 
             <div class="card-container">
                 <button class="apply_button" id="applyBtn1">Apply By Email</button>

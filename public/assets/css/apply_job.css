@@ -83,17 +83,6 @@ main {
   top: auto;
 }
 
-@media print {
-  body * {
-    display: none;
-  }
-
-  .content,
-  .content img {
-    display: block;
-  }
-}
-
 .card2 {
   display: none;
   margin-top: 1%;
@@ -249,4 +238,34 @@ main {
   font-weight: 600;
   font-family: Poppins, sans-serif;
   color: #8b0303;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .ads_img {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media print1 {
+  body * {
+    visibility: hidden;
+  }
+
+  .ads_img {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
