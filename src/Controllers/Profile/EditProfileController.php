@@ -206,14 +206,18 @@ if (isset($_POST['submit'])) {
                         }
                     }
                     $profile_msg .= "<div class='positive-img-msg'>Profile image updated successfully!</div>";
+                    $msg = "<div class='positive-msg'>Profile updated successfully!</div>";
                 } else {
                     $profile_msg .= "<div class='nagative-img-msg'>Failed to update profile image in database.</div>";
+                    $msg = "<div class='nagative-msg'>Profile not updated successfully!</div>";
                 }
             } else {
                 $profile_msg .= "<div class='nagative-img-msg'>Failed to upload profile image.</div>";
+                $msg = "<div class='nagative-msg'>Profile not updated successfully!</div>";
             }
         } else {
-            $profile_msg .= "<div class='nagative-img-msg'>Invalid image format or size.<br> Please upload a valid image (under 3MB).</div>";
+            $profile_msg .= "<div class='nagative-img-msg'>Invalid image format or size for profile image.<br> Please upload a valid image (under 3MB).</div>";
+            $msg = "<div class='nagative-msg'>Profile not updated successfully!</div>";
         }
     }
 
@@ -242,19 +246,23 @@ if (isset($_POST['submit'])) {
                         }
                     }
                     $resume_msg .= "<div class='positive-resume-img-msg'>Resume image updated successfully!</div>";
+                    $msg = "<div class='positive-msg'>Profile updated successfully!</div>";
                 } else {
                     $resume_msg .= "<div class='nagative-resume-img-msg'>Failed to update resume image in database.</div>";
+                    $msg = "<div class='nagative-msg'>Profile not updated successfully!</div>";
                 }
             } else {
                 $resume_msg .= "<div class='nagative-resume-img-msg'>Failed to upload resume image.</div>";
+                $msg = "<div class='nagative-msg'>Profile not updated successfully!</div>";
             }
         } else {
-            $resume_msg .= "<div class='nagative-resume-img-msg'>Invalid image format or size.<br> Please upload a valid image (under 3MB).</div>";
+            $resume_msg .= "<div class='nagative-resume-img-msg'>Invalid image format or size for resume.<br> Please upload a valid image (under 3MB).</div>";
+            $msg = "<div class='nagative-msg'>Profile not updated successfully!</div>";
         }
     }
 
     // Refetch data after successful updates only if no errors
-    if (strpos($msg, 'successfully') !== false && strpos($profile_msg, 'successfully') !== false && strpos($resume_msg, 'successfully') !== false) {
+    if (strpos($msg, 'successfully') !== false || strpos($profile_msg, 'successfully') !== false || strpos($resume_msg, 'successfully') !== false) {
         $query0 = "SELECT * FROM users WHERE id = $id";
         $result0 = mysqli_query($conn, $query0);
         $row0 = mysqli_fetch_assoc($result0);

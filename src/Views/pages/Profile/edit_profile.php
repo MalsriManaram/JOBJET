@@ -11,32 +11,23 @@ include CONTROLLERS.'Profile/EditProfileController.php';
                 <a href="<?php echo BASE_URL; ?>profile/my_profile" class="view-button">View Profile</a>
                 <h3>Edit Profile</h3>
                 <hr class="hr1">
-                <?php
-                    if (!empty($msg)) {
-                        if (strpos($profile_msg, 'Profile image updated successfully!') !== false || strpos($resume_msg, 'Resume image updated successfully!') !== false) {
-                            echo $msg;
-                        } else {
-                            echo "<div class='nagative-resume-img-msg'>Profile is not updated</div>";
-                        }
-                    } ?>
+                <?php echo $msg; ?>
                 <div class="profile-header">
-                    <div>
+                    <div class="d-flex flex-column align-items-center">
                         <div class="profile-image-container">
                             <input type="file" name="upload_image" id="upload-file" class="upload-input"  accept=".jpg,.jpeg,.png,image/jpeg,image/png">
                             <label for="upload-file" class="pro_img_label">
                                 <img class="pro_img" src="<?php echo BASE_URL; ?>assets/storage/uploads/profile-pics/<?php echo $pro_img; ?>" alt="Profile Image">
                                 <img class="upload_img" src="<?php echo BASE_URL; ?>assets/images/website-images/Upload.png" alt="Upload">
                             </label>
-                            
                         </div>
-                        <?php echo $profile_msg; ?>
+                        <div style="margin-top: 10px;"><?php echo $profile_msg; ?></div>
                     </div>
                     <div class="For-name">
                         <h2><input name="full_name" placeholder="Full Name" value="<?php echo $full_name; ?>"></h2>
                         <span><input name="nick_name" placeholder="@Nickname" value="<?php echo $nick_name; ?>"></span>
                     </div>
                 </div>
-
                 <div class="info-grid">
                     <div class="section basic-info">
                         <h6>Basic Information</h6>
