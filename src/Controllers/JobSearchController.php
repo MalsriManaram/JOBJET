@@ -2,26 +2,26 @@
 
 include CONFIG.'config.php';
 
-// Check if filter is provided via POST request
 if (isset($_POST['filter'])) {
-    // Sanitize the input
-    $filter = mysqli_real_escape_string($conn, $_POST['filter']);
+    $filter = $_POST['filter'];
     if ($filter === 'all') {
-        // Show all data
-        $sql = 'SELECT * FROM jobadds';
+        $stmt = $conn->prepare('SELECT * FROM jobadds');
     } else {
-        $sql = "SELECT * FROM jobadds WHERE adds_heading LIKE '%$filter%'";
+        $stmt = $conn->prepare("SELECT * FROM jobadds WHERE adds_heading LIKE ?");
+        $like_filter = '%' . $filter . '%';
+        $stmt->bind_param('s', $like_filter);
     }
 } elseif (isset($_POST['search'])) {
-    // Sanitize the input
-    $search = mysqli_real_escape_string($conn, $_POST['search']);
-    $sql = "SELECT * FROM jobadds WHERE adds_heading LIKE '%$search%' OR ads_position LIKE '%$search%'";
+    $search = $_POST['search'];
+    $stmt = $conn->prepare("SELECT * FROM jobadds WHERE adds_heading LIKE ? OR ads_position LIKE ?");
+    $like_search = '%' . $search . '%';
+    $stmt->bind_param('ss', $like_search, $like_search);
 } else {
-    // Load all data
-    $sql = 'SELECT * FROM jobadds';
+    $stmt = $conn->prepare('SELECT * FROM jobadds');
 }
 
-$result = mysqli_query($conn, $sql);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if (mysqli_num_rows($result) > 0) {
     echo '<div class="container" id="dataContainer">';

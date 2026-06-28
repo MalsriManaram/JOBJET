@@ -1,5 +1,10 @@
 <?php
 
+// --- INFINITYFREE CLEAN URL FIX ---
+// Force the router to think it is in the root directory
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+// ----------------------------------
+
 // Load Composer autoloader
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -19,7 +24,7 @@ $basePath = dirname($scriptName);
 $request = $uri;
 
 // Strip base_path if it matches
-if ($basePath !== '/' && strpos($uri, $basePath) === 0) {
+if ($basePath !== '/' && $basePath !== '\\' && strpos($uri, $basePath) === 0) {
     $request = substr($uri, strlen($basePath));
 }
 

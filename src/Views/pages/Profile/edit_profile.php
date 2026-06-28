@@ -4,7 +4,7 @@ include CONTROLLERS.'Profile/EditProfileController.php';
 
 ?>
 
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/edit_profile.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/edit_profile.css?v=<?php echo time(); ?>" type="text/css" media="all" />
     <main>
         <div class="card">
             <form action="" method="post" enctype="multipart/form-data">

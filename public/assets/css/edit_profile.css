@@ -40,6 +40,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.97);
   border-radius: 10px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
@@ -136,6 +137,8 @@ footer {
   font-size: 26px;
   font-weight: 800;
   color: #111;
+  text-align: center;
+  width: 100%;
 }
 
 .For-name span {
@@ -149,6 +152,8 @@ footer {
   font-size: 20px;
   font-weight: 400;
   color: #777;
+  text-align: center;
+  width: 100%;
 }
 
 .section-divider {
@@ -185,6 +190,15 @@ p {
   gap: 12px;
   color: #444;
   transition: color 0.3s;
+  flex-wrap: wrap;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.For-infor p input {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
 }
 
 p:hover {
@@ -244,6 +258,9 @@ p:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .skills li:hover {
@@ -252,8 +269,8 @@ p:hover {
 }
 
 .skills li input {
-  width: auto;
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .no-skills {
@@ -295,6 +312,8 @@ p:hover {
   font-weight: 700;
   margin-bottom: 5px;
   color: #333;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .work-experiences .experience span {
@@ -305,13 +324,15 @@ p:hover {
   align-items: center;
   gap: 5px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .work-experiences .experience span input {
+  flex: 1;
+  min-width: 0;
   font-size: 16px;
   color: #666;
   font-style: italic;
-  width: auto;
 }
 
 .no-experience {
@@ -343,6 +364,8 @@ p:hover {
   text-decoration: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+  box-sizing: border-box;
 }
 
 .edit-button {
@@ -363,6 +386,8 @@ p:hover {
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+  box-sizing: border-box;
 }
 
 .edit-button:hover,
@@ -462,7 +487,8 @@ select {
   display: block;
   background-color: #e0e0e0;
   border-radius: 10px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 120px;
   cursor: pointer;
   display: flex;
@@ -552,10 +578,11 @@ select {
 
   .edit-button,
   .view-button {
-    position: static;
+    position: static !important;
     margin: 10px auto;
     width: 80%;
     max-width: 200px;
+    align-self: center;
   }
 
   .edit-button {
@@ -592,5 +619,9 @@ select {
 
   p {
     font-size: 15px;
+  }
+  
+  .For-infor p strong {
+    min-width: 100px;
   }
 }

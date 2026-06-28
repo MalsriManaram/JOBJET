@@ -2,7 +2,7 @@
 include SRC.'Controllers/NavbarController.php';
 ?>
 
-<link href="<?php echo BASE_URL; ?>assets/css/navbar.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo BASE_URL; ?>assets/css/navbar.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar01">
     <div class="container-fluid">
         <a class="me-auto" id="icon" href="<?php echo BASE_URL; ?>home">

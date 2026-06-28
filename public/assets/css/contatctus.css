@@ -116,7 +116,13 @@ main #icon2 {
   margin-bottom: 5px;
 }
 
+.map {
+  width: 100%;
+}
+
 .map iframe {
+  width: 100% !important;
+  max-width: 100%;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -257,5 +263,9 @@ main #icon2 {
 
   .contactForm {
     padding: 30px 20px;
+  }
+
+  .map iframe {
+    height: 300px !important;
   }
 }

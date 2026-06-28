@@ -6,7 +6,7 @@ include LAYOUTS.'navbar.php';
 include CONFIG.'config.php';
 ?>
 
-<link href="<?php echo BASE_URL; ?>assets/css/job.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo BASE_URL; ?>assets/css/job.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
   
 <main>
 <div  class="container-for-search">

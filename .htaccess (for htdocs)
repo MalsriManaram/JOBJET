@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Hide the JOBJET/public path from the browser
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /JOBJET/public/
+    RewriteRule ^JOBJET/public/(.*)$ /$1 [R=301,L]
+    
+    # Send all traffic to the JOBJET/public folder silently
+    RewriteCond %{REQUEST_URI} !^/JOBJET/public/
+    RewriteRule ^(.*)$ /JOBJET/public/$1 [L]
+</IfModule>

@@ -31,3 +31,8 @@ Thumbs.db
 # Misc
 *.bak
 *.tmp
+
+/jobjet.infinityfreeapp.com.txt
+
+# SQL 
+SQL/

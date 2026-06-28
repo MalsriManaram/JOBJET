@@ -9,10 +9,11 @@ if (isset($_POST['submit'])) {
 
     if (!empty($search)) {
         $not_search = true;
-        // Perform a single query joining the tables
-        $sql = "SELECT * FROM topemployers WHERE company_name LIKE '%$search%'";
-
-        $result = mysqli_query($conn, $sql);
+        $stmt = $conn->prepare("SELECT * FROM topemployers WHERE company_name LIKE ?");
+        $like_search = '%' . $_POST['search'] . '%';
+        $stmt->bind_param('s', $like_search);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         // Check if any result is found
         if (mysqli_num_rows($result) > 0) {
@@ -52,8 +53,9 @@ if (isset($_POST['submit'])) {
 }
 
 if (!$not_search) {
-    $sql = 'SELECT * FROM topemployers';
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare('SELECT * FROM topemployers');
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     echo '<div class="main-container" id="dataContainer">';
     while ($row = mysqli_fetch_assoc($result)) {

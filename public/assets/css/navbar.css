@@ -75,6 +75,19 @@ body {
   color: #0075ff;
 }
 
+@media screen and (max-width: 990px) {
+  .nav-link.mx-lg-2 {
+    color: #000000 !important;
+  }
+  .nav-link.mx-lg-2:hover {
+    color: #7c7c7c !important;
+  }
+  .nav-link.mx-lg-2.active {
+    font-weight: bolder !important;
+    color: #0075ff !important;
+  }
+}
+
 @media (min-width: 991px) {
   .nav-link.mx-lg-2::before {
     content: "";
@@ -139,6 +152,7 @@ body {
   background: #ffffff;
   padding: 20px;
   width: 320px;
+  max-width: 90vw;
   height: auto;
   border-radius: 30px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.144);
@@ -192,10 +206,10 @@ body {
   padding: 6px 25px;
   border-radius: 30px;
   text-decoration: none;
-  transform: translateX(8px);
-  position: relative;
-  left: 5px;
-  bottom: 10px;
+  display: block;
+  width: 220px;
+  margin: 10px auto 0;
+  box-sizing: border-box;
 }
 
 .view-pro-button {
@@ -208,6 +222,8 @@ body {
   padding: 6px 25px;
   border-radius: 30px;
   text-decoration: none;
-  position: relative;
-  bottom: 10px;
+  display: block;
+  width: 220px;
+  margin: 15px auto 0;
+  box-sizing: border-box;
 }

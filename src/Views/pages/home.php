@@ -5,7 +5,7 @@ include LAYOUTS.'navbar.php';
 include CONFIG.'config.php';
 
 ?>
-<link href="<?php echo BASE_URL; ?>assets/css/home.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo BASE_URL; ?>assets/css/home.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
 <main>
     <div class="background-with-gradient">
         <div class="content">

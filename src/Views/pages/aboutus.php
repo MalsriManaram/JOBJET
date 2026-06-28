@@ -15,8 +15,8 @@ include CONFIG.'config.php';
                     <h1>About Us</h1>
                 </div>
                 <div class="content">
-                    <p>At Jobjet, we are passionate about revolutionizing the job market by bridging the gap between talented individuals and forward-thinking companies. Founded in 2022, our platform has grown to become a trusted resource for millions of job seekers and employers worldwide.</p>
-                    <p>Our team is composed of industry experts dedicated to creating innovative tools that simplify the hiring process, from AI-powered resume matching to real-time job alerts. We prioritize diversity, inclusion, and equal opportunities for all.</p>
+                    <p>At Jobjet, we are passionate about revolutionizing the job market by bridging the gap between talented individuals and forward-thinking companies. Founded in 2024, our platform has grown to become a trusted resource for millions of job seekers and employers worldwide.</p>
+                    <p>We focus on providing a simple, reliable, and user-friendly platform that makes job searching and hiring more accessible and efficient. Jobjet is built to support fair hiring practices and create meaningful connections between employers and job seekers across diverse industries.</p>
                     
                     <div class="section-divider"></div>
                     

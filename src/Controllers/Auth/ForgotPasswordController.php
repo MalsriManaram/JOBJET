@@ -19,8 +19,15 @@ if (isset($_POST['submit'])) {
     $Email = mysqli_real_escape_string($conn, $_POST['Email']);
     $code = mysqli_real_escape_string($conn, md5(rand()));
 
-    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email='{$Email}'")) > 0) {
-        $query = mysqli_query($conn, "UPDATE users SET code='{$code}' WHERE email='$Email'");
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email=? LIMIT 1");
+    $stmt->bind_param('s', $Email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows > 0) {
+        $stmt_update = $conn->prepare("UPDATE users SET code=? WHERE email=?");
+        $stmt_update->bind_param('ss', $code, $Email);
+        $query = $stmt_update->execute();
 
         if ($query) {
             // this code uses for get the verification link to the email

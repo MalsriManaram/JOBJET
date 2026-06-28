@@ -172,3 +172,41 @@ footer p {
     background-color: #000000;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .content {
+    left: 5%;
+    width: 90%;
+  }
+  .content h1 {
+    font-size: 40px;
+  }
+  .content h3 {
+    font-size: 22px;
+  }
+  .content p {
+    font-size: 15px;
+    max-width: 100%;
+  }
+  .find_jobs {
+    font-size: 20px;
+    width: 160px;
+  }
+  .social-menu {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    margin: 0;
+  }
+  .social-menu ul {
+    position: static;
+    left: auto;
+    top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  .social-menu ul li {
+    margin: 0;
+  }
+}

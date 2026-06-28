@@ -2,7 +2,7 @@
 include CONTROLLERS.'Profile/MyProfileController.php';
 ?>
 
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/profile.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/profile.css?v=<?php echo time(); ?>" type="text/css" media="all" />
 <main>
     <?php if (isset($id)) { ?>
         <div class="card">

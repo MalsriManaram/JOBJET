@@ -1,2 +1,8 @@
-RewriteEngine On
-RewriteRule ^$ /JOBJET/public/ [R=301,L]
+# Block public access to .env and all other hidden files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing (prevents users from seeing a list of your files)
+Options -Indexes

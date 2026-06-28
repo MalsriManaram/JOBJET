@@ -159,10 +159,11 @@ footer {
 
 .data-container {
   display: inline-block;
+  vertical-align: top;
   margin: 8px;
   width: 270px;
   min-height: 300px;
-  max-height: 320px;
+  height: auto;
   padding-inline: 25px;
   padding-block: 30px;
   background-color: rgb(255, 255, 255);
@@ -416,12 +417,12 @@ a {
     left: 0px;
     z-index: 1;
     transition: 0.2s;
-    width: max-content;
+    width: 100%;
   }
   .container {
     margin: 0px;
     padding: 0px;
-    width: max-content;
+    width: 100%;
   }
 
   .data-container {
@@ -437,5 +438,23 @@ a {
 
   .popup-container {
     display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .data-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+  }
+  .container {
+    width: 100%;
+    margin-left: 0;
+  }
+  .for-job-container {
+    top: 150px;
+    width: 100%;
+    left: 0;
   }
 }

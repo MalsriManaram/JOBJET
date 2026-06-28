@@ -6,13 +6,21 @@ include CONFIG.'config.php';
 $msg = '';
 
 if (isset($_GET['reset'])) {
-    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE code='{$_GET['reset']}'")) > 0) {
+    $reset_code = $_GET['reset'];
+    $stmt = $conn->prepare("SELECT id FROM users WHERE code=? LIMIT 1");
+    $stmt->bind_param('s', $reset_code);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows > 0) {
         if (isset($_POST['submit'])) {
             $Password = mysqli_real_escape_string($conn, md5($_POST['Password']));
             $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm_password']));
 
             if ($Password === $confirm_password) {
-                $query = mysqli_query($conn, "UPDATE users SET password='{$Password}', code='' WHERE code='{$_GET['reset']}'");
+                $stmt_update = $conn->prepare("UPDATE users SET password=?, code='' WHERE code=?");
+                $stmt_update->bind_param('ss', $Password, $reset_code);
+                $query = $stmt_update->execute();
 
                 if ($query) {
                     header('Location: /JOBJET/PHP/login.php');

@@ -52,7 +52,8 @@ main {
 }
 
 .form-control {
-  width: 360px;
+  width: 100%;
+  max-width: 360px;
   height: 50px;
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
@@ -101,8 +102,8 @@ main {
 
 .data-container {
   width: 230px;
-  height: 290px;
-  min-height: 100px;
+  height: auto;
+  min-height: 290px;
   margin-block: 10px;
   margin-inline: 10px;
   padding: 15px;
@@ -125,10 +126,8 @@ main {
 }
 
 .data-container img {
-  margin: 4%;
-  margin-left: 37px;
-  justify-content: center;
-  text-align: center;
+  display: block;
+  margin: 15px auto;
   width: 120px;
   height: 120px;
   border-radius: 10px;
@@ -137,18 +136,16 @@ main {
 .data-container h3 {
   font-size: 22px;
   font-weight: 700;
-  position: relative;
-  right: 5%;
-  justify-content: center;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .data-container p {
   font-size: 15px;
-  margin-left: 3%;
-  min-width: 210px;
-  padding-right: 10%;
-  justify-content: left;
+  text-align: left;
+  margin: 0;
+  padding: 0 15px 15px 15px;
 }
 
 a {
@@ -286,12 +283,21 @@ a {
 }
 
 @media screen and (max-width: 600px) {
+  .data-container {
+    width: 90%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+  }
+
   .popup-container {
     display: none;
   }
 
   #mark {
-    position: relative;
-    left: 110px;
+    position: static;
+    text-align: center;
+    margin-left: 0;
   }
 }
